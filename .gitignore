@@ -44,3 +44,4 @@ bin/
 java_pid4356.hprof
 *.hprof
 gradle.properties
+*.salive
