@@ -8,7 +8,6 @@ import org.jetbrains.kotlinx.dataframe.io.ColType
 import org.jetbrains.kotlinx.dataframe.io.readCSV
 import velkonost.technical.analysis.example.items.CsvColumn
 import velkonost.technical.analysis.indicator.base.IndicatorName
-import java.io.File
 import java.io.FileNotFoundException
 import java.math.BigDecimal
 

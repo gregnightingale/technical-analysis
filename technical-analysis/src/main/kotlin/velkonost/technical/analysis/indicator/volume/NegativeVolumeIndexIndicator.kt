@@ -56,7 +56,7 @@ class NegativeVolumeIndexIndicator(
     private val close: DataColumn<BigDecimal>,
     private val volume: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Nvi){
+) : Indicator(IndicatorName.Nvi) {
 
     /**
      * Calculates the Negative Volume Index (NVI) values.

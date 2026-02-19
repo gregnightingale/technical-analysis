@@ -12,6 +12,7 @@ package velkonost.technical.analysis.indicator.base
  * Each indicator has a unique title used for identification in the output data.
  */
 enum class IndicatorName(val title: String) {
+    Mine("mine"),
 
     // Volume indicators - measure trading activity and volume-price relationships
     Adi("volume_adi"),        // Accumulation/Distribution Index

@@ -54,10 +54,8 @@ import velkonost.technical.analysis.indicator.volatility.bollingerBands.*
 import velkonost.technical.analysis.indicator.volatility.donchianChannel.*
 import velkonost.technical.analysis.indicator.volatility.keltnerChannel.*
 import velkonost.technical.analysis.indicator.volume.*
-import java.io.File
 import java.io.FileNotFoundException
 import java.math.BigDecimal
-import java.nio.file.Paths
 
 /**
  * ExampleRunner is a utility object that demonstrates and tests the functionality of all technical indicators

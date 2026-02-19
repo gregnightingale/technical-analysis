@@ -58,7 +58,7 @@ class AwesomeOscillatorIndicator(
     private val window1: Int = 5,
     private val window2: Int = 34,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Ao){
+) : Indicator(IndicatorName.Ao) {
 
     /**
      * Calculates the Awesome Oscillator values.

@@ -1,7 +1,6 @@
 package velkonost.technical.analysis.indicator.trend
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
-import velkonost.technical.analysis.extensions.movingAverage
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
@@ -48,7 +47,8 @@ class DpoIndicator(
             .divide(BigDecimal(closeList.size), 10, RoundingMode.HALF_UP)
 
         val shiftValue = (0.5 * window).toInt() + 1
-        val closeShift = Array(closeList.size) { index -> if (index < shiftValue) meanClose else closeList[index - shiftValue] }
+        val closeShift =
+            Array(closeList.size) { index -> if (index < shiftValue) meanClose else closeList[index - shiftValue] }
         val rollingMean = closeList.calculateRollingMean()
 
         val dpoValues = closeShift.mapIndexed { index, shiftedValue ->

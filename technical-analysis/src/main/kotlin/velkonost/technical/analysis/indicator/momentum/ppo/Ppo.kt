@@ -12,7 +12,7 @@ class Ppo(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Ppo){
+) : Indicator(IndicatorName.Ppo) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         // Рассчитываем быстрые и медленные EMA

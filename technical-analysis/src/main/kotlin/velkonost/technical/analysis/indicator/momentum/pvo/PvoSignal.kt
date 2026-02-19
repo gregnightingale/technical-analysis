@@ -4,7 +4,6 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 class PvoSignal(
     private val volume: DataColumn<BigDecimal>,
@@ -12,7 +11,7 @@ class PvoSignal(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.PvoSignal){
+) : Indicator(IndicatorName.PvoSignal) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).calculate()

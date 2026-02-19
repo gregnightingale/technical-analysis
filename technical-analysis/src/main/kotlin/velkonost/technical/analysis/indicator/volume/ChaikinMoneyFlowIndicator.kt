@@ -2,10 +2,10 @@ package velkonost.technical.analysis.indicator.volume
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.indices
-import velkonost.technical.analysis.indicator.base.IndicatorName
 import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.extensions.safeDivide
 import velkonost.technical.analysis.indicator.base.Indicator
+import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
 
 /**

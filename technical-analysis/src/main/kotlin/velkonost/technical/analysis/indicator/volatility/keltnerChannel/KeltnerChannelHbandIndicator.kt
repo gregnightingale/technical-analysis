@@ -4,7 +4,6 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 /**
  * Keltner Channel High Band Indicator implementation.

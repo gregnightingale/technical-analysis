@@ -93,7 +93,7 @@ import kotlin.math.ln
 class DailyLogReturnIndicator(
     private val close: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Dlr){
+) : Indicator(IndicatorName.Dlr) {
 
     /**
      * Calculates the daily log return values.

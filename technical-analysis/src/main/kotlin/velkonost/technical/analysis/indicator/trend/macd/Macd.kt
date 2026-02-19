@@ -11,7 +11,7 @@ class Macd(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Macd){
+) : Indicator(IndicatorName.Macd) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val emaFast = close.calculateEma(windowFast)

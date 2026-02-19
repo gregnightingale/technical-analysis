@@ -1,10 +1,11 @@
 package velkonost.technical.analysis.indicator.volume
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
+import org.jetbrains.kotlinx.dataframe.api.convertToBigDecimal
 import org.jetbrains.kotlinx.dataframe.api.cumSum
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
-import velkonost.technical.analysis.indicator.base.IndicatorName
 import velkonost.technical.analysis.indicator.base.Indicator
+import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
 
 /**
@@ -62,11 +63,8 @@ class AccDistIndexIndicator(
         }
 
         val adiValues = clv.mapIndexed { index, clvValue ->
-            clvValue.multiply(volume[index])
+            clvValue.multiply(volume[index]).toDouble()
         }
-
-        return adiValues.cumSum(fillna)
+        return adiValues.cumSum(fillna).convertToBigDecimal()
     }
 }
-
-

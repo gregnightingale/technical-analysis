@@ -5,7 +5,6 @@ import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import velkonost.technical.analysis.indicator.trend.sma.SmaFast
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 /**
  * KST Signal Line indicator implementation.

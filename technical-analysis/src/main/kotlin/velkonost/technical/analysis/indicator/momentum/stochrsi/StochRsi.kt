@@ -16,7 +16,7 @@ class StochRsi(
     private val smooth1: Int = 3,
     private val smooth2: Int = 3,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.StochRsi){
+) : Indicator(IndicatorName.StochRsi) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val rsiIndicator = RsiIndicator(close, window, fillna = false).calculate()

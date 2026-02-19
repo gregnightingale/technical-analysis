@@ -15,7 +15,7 @@ import java.math.RoundingMode
  * This class provides common functionality and utilities for calculating various technical indicators.
  * All specific indicators should extend this class and implement the calculate() method.
  *
- * @property name The name of the indicator, defined in IndicatorName enum
+ * @property name The name of the indicator, defined in IndicatorType enum
  * @property scale The decimal scale used for calculations (default: 10)
  */
 abstract class Indicator(

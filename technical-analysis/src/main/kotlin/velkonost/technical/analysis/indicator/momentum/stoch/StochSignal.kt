@@ -1,15 +1,10 @@
 package velkonost.technical.analysis.indicator.momentum.stoch
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
-import org.jetbrains.kotlinx.dataframe.api.toTypedArray
-import velkonost.technical.analysis.extensions.calculateRollingMax
-import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.extensions.movingAverage
-import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 /**
  * Stochastic Signal (%D) implementation.

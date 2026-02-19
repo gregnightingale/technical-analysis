@@ -50,7 +50,7 @@ import java.math.RoundingMode
 class CumulativeReturnIndicator(
     private val close: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Cr){
+) : Indicator(IndicatorName.Cr) {
 
     /**
      * Calculates the cumulative return values.

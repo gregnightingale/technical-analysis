@@ -2,8 +2,6 @@ package velkonost.technical.analysis.indicator.trend.ichimoku
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.average
-import velkonost.technical.analysis.extensions.calculateRollingMax
-import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorName
 import java.math.BigDecimal

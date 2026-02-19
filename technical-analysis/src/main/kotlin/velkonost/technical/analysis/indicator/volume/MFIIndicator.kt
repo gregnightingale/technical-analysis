@@ -79,7 +79,7 @@ class MFIIndicator(
             val startIndex = maxOf(0, i - window + 1)
             var positiveSum = BigDecimal.ZERO
             var negativeSum = BigDecimal.ZERO
-            
+
             // Вычисляем суммы для текущего окна
             for (j in startIndex..i) {
                 val value = moneyFlow[j]
@@ -89,7 +89,7 @@ class MFIIndicator(
                     negativeSum = negativeSum.add(value.abs())
                 }
             }
-            
+
             positiveMF[i] = positiveSum.setScale(10, RoundingMode.HALF_UP)
             negativeMF[i] = negativeSum.setScale(10, RoundingMode.HALF_UP)
         }

@@ -34,7 +34,7 @@ class AverageTrueRange(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-): Indicator(IndicatorName.Atr) {
+) : Indicator(IndicatorName.Atr) {
 
     /**
      * Calculates the Average True Range (ATR) values.

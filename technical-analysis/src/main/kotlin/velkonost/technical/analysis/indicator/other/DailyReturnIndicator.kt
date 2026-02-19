@@ -45,7 +45,7 @@ import java.math.RoundingMode
 class DailyReturnIndicator(
     private val close: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Dr){
+) : Indicator(IndicatorName.Dr) {
 
     /**
      * Calculates the daily return values.

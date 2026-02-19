@@ -23,7 +23,7 @@ class BollingerBandsWband(
             val h = hband[index]
             val l = lband[index]
             val m = mavg[index]
-            
+
             if (m.compareTo(BigDecimal.ZERO) != 0) {
                 val width = h.subtract(l).divide(m, 10, RoundingMode.HALF_UP)
                     .multiply(BigDecimal(100))

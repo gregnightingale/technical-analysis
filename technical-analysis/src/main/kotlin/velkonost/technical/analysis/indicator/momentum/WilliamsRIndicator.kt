@@ -50,7 +50,7 @@ class WilliamsRIndicator(
     private val close: DataColumn<BigDecimal>,
     private val lbp: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Wr){
+) : Indicator(IndicatorName.Wr) {
 
     /**
      * Calculates the Williams %R values.

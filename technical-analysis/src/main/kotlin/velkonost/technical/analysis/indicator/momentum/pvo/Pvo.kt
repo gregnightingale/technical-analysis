@@ -12,7 +12,7 @@ class Pvo(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Pvo){
+) : Indicator(IndicatorName.Pvo) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         // Вычисление быстрых и медленных EMA для объема
