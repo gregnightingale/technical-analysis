@@ -12,13 +12,13 @@ internal interface SmaIndicator {
         val smaValues = Array<BigDecimal>(close.size()) { BigDecimal.ZERO }
         val size = close.size()
 
-        // Оптимизация: используем накопительную сумму для уменьшения количества операций
+        // Optimization: Using a cumulative sum to reduce the number of operations.
         for (i in 0 until size) {
             val startIndex = maxOf(0, i - window + 1)
             var sum = BigDecimal.ZERO
             val windowSize = i - startIndex + 1
             
-            // Суммируем значения в окне
+            // Summing the values in the window
             for (j in startIndex..i) {
                 sum = sum.add(closeList[j])
             }

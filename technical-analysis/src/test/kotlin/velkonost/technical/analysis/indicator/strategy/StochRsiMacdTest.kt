@@ -57,10 +57,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -113,10 +113,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -166,10 +166,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -209,10 +209,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 2
+            backStep = 2
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -232,10 +232,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = -1
+            backStep = -1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -289,10 +289,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -344,10 +344,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -397,10 +397,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         // Since the conditions use strict inequalities, no signal should be triggered
         assertEquals(StrategyDecision.Nothing, decision)
     }
@@ -451,10 +451,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         // No full condition for Long or Short is satisfied
         assertEquals(StrategyDecision.Nothing, decision)
     }
@@ -505,10 +505,10 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         // MACD crossover occurred but StochRSI conditions are not met
         assertEquals(StrategyDecision.Nothing, decision)
     }

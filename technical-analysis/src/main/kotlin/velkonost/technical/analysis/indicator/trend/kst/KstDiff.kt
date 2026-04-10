@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend.kst
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.trend.sma.SmaFast
 import java.math.BigDecimal
 
@@ -41,7 +41,7 @@ class KstDiff(
     private val window4: Int = 15,
     private val nsig: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.KstDiff) {
+) : Indicator(IndicatorType.KstDiff, close.size()) {
 
     /**
      * Calculates the KST Difference values.
@@ -59,7 +59,7 @@ class KstDiff(
         val kstDiff = kst.toList().zip(kstSignal.toList()) { kstValue, sigValue ->
             kstValue.subtract(sigValue)
         }
-        return DataColumn.create(name.title, kstDiff)
+        return DataColumn.create(type.name, kstDiff)
     }
 
 }

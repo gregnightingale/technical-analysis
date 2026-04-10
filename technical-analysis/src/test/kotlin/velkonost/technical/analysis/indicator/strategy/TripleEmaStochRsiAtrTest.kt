@@ -59,10 +59,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal when buy conditions are met.")
     }
 
@@ -92,10 +92,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal when sell conditions are met.")
     }
 
@@ -119,10 +119,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Expected no signal when no conditions are met.")
     }
 
@@ -146,10 +146,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Expected no signal due to insufficient data.")
     }
 
@@ -191,10 +191,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal at the edge case for buy conditions.")
     }
 
@@ -236,10 +236,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal at the edge case for sell conditions.")
     }
 
@@ -281,10 +281,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal after rapid changes leading to buy conditions.")
     }
 
@@ -326,10 +326,10 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            currentPos = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal after rapid changes leading to sell conditions.")
     }
 }

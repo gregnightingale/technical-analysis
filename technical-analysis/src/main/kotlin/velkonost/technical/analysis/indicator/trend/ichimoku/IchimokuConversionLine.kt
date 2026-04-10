@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -55,7 +55,7 @@ class IchimokuConversionLine(
     private val window3: Int = 52,
     private val visual: Boolean = false,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.IchimokuConv) {
+) : Indicator(IndicatorType.IchimokuConv, high.size()) {
 
     /**
      * Calculates the Ichimoku Conversion Line (Tenkan-sen) values.
@@ -79,6 +79,6 @@ class IchimokuConversionLine(
         val result = convHigh.zip(convLow) { h, l ->
             (h.add(l)).divide(BigDecimal(2), 10, RoundingMode.HALF_UP)
         }
-        return DataColumn.Companion.create(name.title, result)
+        return DataColumn.Companion.create(type.name, result)
     }
 }

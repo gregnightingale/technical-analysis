@@ -23,18 +23,18 @@ package velkonost.technical.analysis.strategy.base
  * Each strategy has a unique title used for identification in the output data.
  * Strategies can be used individually or combined for more complex trading systems.
  */
-enum class StrategyName(val title: String) {
-    Breakout("breakout"),
-    EmaCross("EMA_cross"),
-    EmaCrossover("EmaCrossover"),
-    CandleWick("candle_wick"),
-    GoldenCross("goldenCross"),
-    StochRsiMacd("StochRSIMACD"),
-    RsiStochEma("rsi_stoch_ema"),
-    StochasticBb("stochBB"),
-    TripleEma("tripleEMA"),
-    TripleEmaStochRsiAtr("tripleEMAStochasticRSIATR"),
-    HeikinAshiEma("heikin_ashi_ema"),
-    HeikinAshiEma2("heikin_ashi_ema2"),
-    FibMacd("fibMACD")
+enum class StrategyType(val title: String) {
+    Breakout("Breakout"),
+    EmaCross("EMA Cross"),
+    EmaCrossover("EMA Crossover"),
+    CandleWick("Candle Wick"),
+    GoldenCross("Golden Cross"),
+    StochRsiMacd("Stoch RSI MACD"),
+    RsiStochEma("RSI Stoch EMA"),
+    StochasticBb("Stoch BB"),
+    TripleEma("Triple EMA"),
+    TripleEmaStochRsiAtr("Triple EMA Stochastic RSI ATR"),
+    HeikinAshiEma("Heikin Ashi EMA"),
+    HeikinAshiEma2("Heikin Ashi EMA2"),
+    FibMacd("Fib MACD")
 }

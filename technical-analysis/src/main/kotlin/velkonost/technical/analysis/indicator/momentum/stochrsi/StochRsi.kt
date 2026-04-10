@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.momentum.RsiIndicator
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -16,7 +16,7 @@ class StochRsi(
     private val smooth1: Int = 3,
     private val smooth2: Int = 3,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.StochRsi) {
+) : Indicator(IndicatorType.StochRsi, close.size()) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val rsiIndicator = RsiIndicator(close, window, fillna = false).calculate()
@@ -35,6 +35,6 @@ class StochRsi(
             }
         }
 
-        return DataColumn.create(name.title, stochRsi.toList())
+        return DataColumn.create(type.name, stochRsi.toList())
     }
 }

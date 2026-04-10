@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.other
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.MathContext
 import kotlin.math.ln
@@ -93,7 +93,7 @@ import kotlin.math.ln
 class DailyLogReturnIndicator(
     private val close: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Dlr) {
+) : Indicator(IndicatorType.Dlr, close.size()) {
 
     /**
      * Calculates the daily log return values.
@@ -118,10 +118,10 @@ class DailyLogReturnIndicator(
      */
     override fun calculate(): DataColumn<BigDecimal> {
         val closeValues = close.toList()
-        val dailyLogReturn = Array(closeValues.size) { BigDecimal.ZERO }
+        val dailyLogReturn = Array(size) { BigDecimal.ZERO }
 
         // Рассчитываем логарифм разницы цен
-        for (i in 1 until closeValues.size) {
+        for (i in 1 until size) {
             if (closeValues[i].compareTo(BigDecimal.ZERO) > 0 && closeValues[i - 1].compareTo(BigDecimal.ZERO) > 0) {
                 val logCurrent = ln(closeValues[i].toDouble())
                 val logPrevious = ln(closeValues[i - 1].toDouble())
@@ -129,6 +129,6 @@ class DailyLogReturnIndicator(
                     .multiply(BigDecimal(100))
             }
         }
-        return DataColumn.create(name.title, dailyLogReturn.toList())
+        return DataColumn.create(type.name, dailyLogReturn.toList())
     }
 }

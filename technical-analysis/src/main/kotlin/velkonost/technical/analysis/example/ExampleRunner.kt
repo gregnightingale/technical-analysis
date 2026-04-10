@@ -8,7 +8,7 @@ import org.jetbrains.kotlinx.dataframe.io.ColType
 import org.jetbrains.kotlinx.dataframe.io.readCSV
 import velkonost.technical.analysis.example.items.CsvColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.momentum.*
 import velkonost.technical.analysis.indicator.momentum.ppo.Ppo
 import velkonost.technical.analysis.indicator.momentum.ppo.PpoHist
@@ -92,7 +92,7 @@ object ExampleRunner {
         val dataframe = DataFrame.readCSV(
             stream = inputStream,
             colTypes = CsvColumn.entries.associate { it.name to it.type }
-                    + IndicatorName.entries.associate { it.title to ColType.BigDecimal }
+                    + IndicatorType.entries.associate { it.name to ColType.BigDecimal }
         )
 
         val highColumn: DataColumn<BigDecimal> = dataframe.getColumn(CsvColumn.High.name).cast()

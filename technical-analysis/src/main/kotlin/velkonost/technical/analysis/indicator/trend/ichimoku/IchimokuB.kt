@@ -5,7 +5,7 @@ import velkonost.technical.analysis.extensions.average
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -60,7 +60,7 @@ class IchimokuB(
     private val window3: Int = 52,
     private val visual: Boolean = false,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.IchimokuB) {
+) : Indicator(IndicatorType.IchimokuB, high.size()) {
 
     /**
      * Calculates the Ichimoku Leading Span B (Senkou Span B) values.
@@ -91,6 +91,6 @@ class IchimokuB(
                 if (index < window2) meanSpanB else senkouSpanB[index - window2]
             }
         }
-        return DataColumn.Companion.create(name.title, senkouSpanB)
+        return DataColumn.Companion.create(type.name, senkouSpanB)
     }
 }

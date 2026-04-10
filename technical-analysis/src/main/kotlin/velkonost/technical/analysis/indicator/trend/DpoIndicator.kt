@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -30,7 +30,7 @@ class DpoIndicator(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 20,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Dpo) {
+) : Indicator(IndicatorType.Dpo, close.size()) {
 
     /**
      * Calculates the Detrended Price Oscillator (DPO) values.
@@ -54,7 +54,7 @@ class DpoIndicator(
         val dpoValues = closeShift.mapIndexed { index, shiftedValue ->
             shiftedValue.subtract(rollingMean[index]).setScale(10, RoundingMode.HALF_UP)
         }
-        return DataColumn.create(name.title, dpoValues)
+        return DataColumn.create(type.name, dpoValues)
     }
 
     /**

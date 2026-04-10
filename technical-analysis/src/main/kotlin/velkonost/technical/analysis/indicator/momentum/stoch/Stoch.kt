@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -37,7 +37,7 @@ class Stoch(
     private val window: Int = 14,
     private val smoothWindow: Int = 3,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Stoch) {
+) : Indicator(IndicatorType.Stoch, close.size()) {
 
     /**
      * Calculates the Stochastic Oscillator (%K) values.
@@ -59,6 +59,6 @@ class Stoch(
                     .multiply(BigDecimal(100))
             } else BigDecimal(50)
         }
-        return DataColumn.create(name.title, stochK.toList())
+        return DataColumn.create(type.name, stochK.toList())
     }
 }

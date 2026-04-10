@@ -3,7 +3,7 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class Breakout(
@@ -12,30 +12,28 @@ class Breakout(
     private val maxClose: DataColumn<BigDecimal>,
     private val minClose: DataColumn<BigDecimal>,
     private val maxVolume: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1,
     private val invert: Boolean = false
-) : Strategy(StrategyName.Breakout) {
+) : Strategy(StrategyType.Breakout, close.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) close.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
-        if (actualIndex < 0 ||
-            actualIndex >= close.size() ||
-            actualIndex >= volume.size() ||
-            actualIndex >= maxClose.size() ||
-            actualIndex >= minClose.size() ||
-            actualIndex >= maxVolume.size()
+        if (index < 0 ||
+            index >= close.size() ||
+            index >= volume.size() ||
+            index >= maxClose.size() ||
+            index >= minClose.size() ||
+            index >= maxVolume.size()
         ) {
             return StrategyDecision.Nothing
         }
 
         return if (invert) {
             when {
-                close[actualIndex] >= maxClose[actualIndex] && volume[actualIndex] >= maxVolume[actualIndex] -> {
+                close[index] >= maxClose[index] && volume[index] >= maxVolume[index] -> {
                     StrategyDecision.Short
                 }
 
-                close[actualIndex] <= minClose[actualIndex] && volume[actualIndex] >= maxVolume[actualIndex] -> {
+                close[index] <= minClose[index] && volume[index] >= maxVolume[index] -> {
                     StrategyDecision.Long
                 }
 
@@ -45,11 +43,11 @@ class Breakout(
             }
         } else {
             when {
-                close[actualIndex] >= maxClose[actualIndex] && volume[actualIndex] >= maxVolume[actualIndex] -> {
+                close[index] >= maxClose[index] && volume[index] >= maxVolume[index] -> {
                     StrategyDecision.Long
                 }
 
-                close[actualIndex] <= minClose[actualIndex] && volume[actualIndex] >= maxVolume[actualIndex] -> {
+                close[index] <= minClose[index] && volume[index] >= maxVolume[index] -> {
                     StrategyDecision.Short
                 }
 
@@ -60,4 +58,3 @@ class Breakout(
         }
     }
 }
-

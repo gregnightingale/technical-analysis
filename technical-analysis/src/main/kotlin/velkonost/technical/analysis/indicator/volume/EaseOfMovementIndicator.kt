@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.extensions.fillNulls
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
@@ -59,7 +59,7 @@ class EaseOfMovementIndicator(
     private val volume: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false
-) : Indicator(IndicatorName.Em) {
+) : Indicator(IndicatorType.Em, high.size()) {
 
     /**
      * Calculates the Ease of Movement (EMV) values.
@@ -108,6 +108,6 @@ class EaseOfMovementIndicator(
         }
 
         val result = if (fillna) emv.fillNulls(BigDecimal.ZERO) else emv
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 }

@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.momentum.ppo
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -33,7 +33,7 @@ class PpoHist(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.PpoHist) {
+) : Indicator(IndicatorType.PpoHist, size = close.size()) {
 
     /**
      * Calculates the PPO Histogram values.
@@ -47,9 +47,9 @@ class PpoHist(
     override fun calculate(): DataColumn<BigDecimal> {
         val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).calculate()
         val ppoSignal = PpoSignal(close, windowSlow, windowFast, windowSign, fillna).calculate()
-        val ppoHist = Array(close.size()) { i ->
+        val ppoHist = Array(size) { i ->
             ppo[i].subtract(ppoSignal[i])
         }
-        return DataColumn.create(name.title, ppoHist.toList())
+        return DataColumn.create(type.name, ppoHist.toList())
     }
 }

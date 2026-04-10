@@ -7,7 +7,7 @@ import org.jetbrains.kotlinx.dataframe.api.getColumn
 import org.jetbrains.kotlinx.dataframe.io.ColType
 import org.jetbrains.kotlinx.dataframe.io.readCSV
 import velkonost.technical.analysis.example.items.CsvColumn
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.io.FileNotFoundException
 import java.math.BigDecimal
 
@@ -27,7 +27,7 @@ object TestTechnicalAnalysis {
         dataframe = DataFrame.readCSV(
             stream = inputStream,
             colTypes = CsvColumn.entries.associate { it.name to it.type }
-                    + IndicatorName.entries.associate { it.title to ColType.BigDecimal }
+                    + IndicatorType.entries.associate { it.name to ColType.BigDecimal }
         )
         highColumn = dataframe.getColumn(CsvColumn.High.name).cast()
         closeColumn = dataframe.getColumn(CsvColumn.Close.name).cast()

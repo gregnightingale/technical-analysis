@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -39,7 +39,7 @@ class VortexNegative(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.VortexIndNegative), VortexIndicator {
+) : Indicator(IndicatorType.VortexIndNegative, size = close.size()), VortexIndicator {
 
     /**
      * Calculates the Vortex Indicator Negative (VIN) values.
@@ -62,6 +62,6 @@ class VortexNegative(
 
         val vmmSum = vmm.rollingSum(window)
         val result = vmmSum.mapIndexed { i, value -> value.divide(trueRangeSum[i], 10, RoundingMode.HALF_UP) }
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 }

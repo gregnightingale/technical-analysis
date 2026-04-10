@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.momentum.ppo
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -28,7 +28,7 @@ class PpoSignal(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.PpoSignal) {
+) : Indicator(IndicatorType.PpoSignal, close.size()) {
 
     /**
      * Calculates the PPO Signal Line values.
@@ -42,6 +42,6 @@ class PpoSignal(
         val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).calculate()
         val ppoSignal = ppo.calculateEma(windowSign)
 
-        return DataColumn.create(name.title, ppoSignal.toList())
+        return DataColumn.create(type.name, ppoSignal.toList())
     }
 }

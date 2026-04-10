@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.sqrt
@@ -58,7 +58,7 @@ class UlcerIndex(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Ui) {
+) : Indicator(IndicatorType.Ui, close.size()) {
 
     /**
      * Calculates the Ulcer Index (UI) values.
@@ -88,7 +88,7 @@ class UlcerIndex(
 
         }.calculateUlcerIndexRolling()
 
-        return DataColumn.create(name.title, ulcerValues)
+        return DataColumn.create(type.name, ulcerValues)
     }
 
     /**

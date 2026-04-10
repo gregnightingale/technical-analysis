@@ -102,7 +102,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Long, result, "Expected a LONG trade direction.")
@@ -188,11 +188,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT trade direction.")
@@ -258,11 +258,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal.")
@@ -303,11 +303,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to insufficient data.")
@@ -408,11 +408,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to lack of MACD crossover.")
@@ -506,11 +506,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to lack of engulfing pattern.")
@@ -611,11 +611,11 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert the expected outcome
         assertEquals(

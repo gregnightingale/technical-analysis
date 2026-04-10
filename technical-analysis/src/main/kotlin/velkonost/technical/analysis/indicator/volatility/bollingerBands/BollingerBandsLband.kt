@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volatility.bollingerBands
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -11,7 +11,7 @@ class BollingerBandsLband(
     private val window: Int = 20,
     private val windowDev: Int = 2,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Bbl) {
+) : Indicator(IndicatorType.Bbl, close.size()) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val mavg = BollingerBandsMavg(close, window).calculate()
@@ -20,6 +20,6 @@ class BollingerBandsLband(
         val result = mavg.toList().mapIndexed { index, avg ->
             avg.subtract(mstd[index].multiply(BigDecimal(windowDev)).setScale(10, RoundingMode.HALF_UP))
         }
-        return DataColumn.create(name.title, result.toList())
+        return DataColumn.create(type.name, result.toList())
     }
 }

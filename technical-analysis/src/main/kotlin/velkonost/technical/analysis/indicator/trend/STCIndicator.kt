@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.trend.macd.Macd
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -44,7 +44,7 @@ class STCIndicator(
     private val smooth1: Int = 3,
     private val smooth2: Int = 3,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Stc) {
+) : Indicator(IndicatorType.Stc, close.size()) {
 
     override val skipTestResults: Boolean
         get() = true
@@ -90,6 +90,6 @@ class STCIndicator(
         }
 
         val stc = stochKD.calculateEma(smooth2)
-        return DataColumn.create(name.title, stc)
+        return DataColumn.create(type.name, stc)
     }
 }

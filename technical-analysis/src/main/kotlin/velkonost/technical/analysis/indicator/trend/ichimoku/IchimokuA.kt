@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.trend.ichimoku
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.average
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -56,7 +56,7 @@ class IchimokuA(
     private val window3: Int = 52,
     private val visual: Boolean = false,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.IchimokuA) {
+) : Indicator(IndicatorType.IchimokuA, high.size()) {
 
     /**
      * Calculates the Ichimoku Leading Span A (Senkou Span A) values.
@@ -87,6 +87,6 @@ class IchimokuA(
             }
         }
 
-        return DataColumn.Companion.create(name.title, senkouSpanA)
+        return DataColumn.Companion.create(type.name, senkouSpanA)
     }
 }

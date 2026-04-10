@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.convertToBigDecimal
 import org.jetbrains.kotlinx.dataframe.api.cumSum
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -36,7 +36,7 @@ class AccDistIndexIndicator(
     private val close: DataColumn<BigDecimal>,
     private val volume: DataColumn<BigDecimal>,
     private val fillna: Boolean = false
-) : Indicator(name = IndicatorName.Adi) {
+) : Indicator(type = IndicatorType.Adi, close.size()) {
 
     /**
      * Calculates the Accumulation/Distribution Index (ADI) values.

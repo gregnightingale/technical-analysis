@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.cumSum
 import velkonost.technical.analysis.extensions.movingAverage
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -36,7 +36,7 @@ class VolumePriceTrendIndicator(
     private val smoothingFactor: Int? = null,
     private val fillna: Boolean = false,
     private val dropNans: Boolean = false
-) : Indicator(IndicatorName.Vpt) {
+) : Indicator(IndicatorType.Vpt, volume.size()) {
 
     /**
      * Calculates the Volume Price Trend (VPT) values.
@@ -52,7 +52,7 @@ class VolumePriceTrendIndicator(
     override fun calculate(): DataColumn<BigDecimal> {
         val size = close.size()
         if (size < 2) {
-            return DataColumn.create(name.title, listOf(BigDecimal.ZERO))
+            return DataColumn.create(type.name, listOf(BigDecimal.ZERO))
         }
 
         val pctChange = Array(size) { BigDecimal.ZERO }
@@ -79,6 +79,6 @@ class VolumePriceTrendIndicator(
             vpt = vpt.filterNot { it == BigDecimal.ZERO }.toTypedArray()
         }
 
-        return DataColumn.create(name.title, vpt.asList())
+        return DataColumn.create(type.name, vpt.asList())
     }
 }

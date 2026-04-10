@@ -1,8 +1,9 @@
 package velkonost.technical.analysis.indicator.trend
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
+import sun.nio.cs.Surrogate.high
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -31,7 +32,7 @@ class TrixIndicator(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 15,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Trix) {
+) : Indicator(IndicatorType.Trix, close.size()) {
 
     /**
      * Calculates the Triple Exponential Average (TRIX) values.
@@ -61,6 +62,6 @@ class TrixIndicator(
             }
         }
 
-        return DataColumn.create(name.title, trixValues)
+        return DataColumn.create(type.name, trixValues)
     }
 }

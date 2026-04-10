@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend.kst
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.trend.sma.SmaFast
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -45,7 +45,7 @@ class Kst(
     private val window4: Int = 15,
     private val nsig: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Kst) {
+) : Indicator(IndicatorType.Kst, close.size()) {
 
     /**
      * Calculates the KST indicator values.
@@ -70,7 +70,7 @@ class Kst(
                 .multiply(BigDecimal(100))
         }
 
-        return DataColumn.create(name.title, kstValues)
+        return DataColumn.create(type.name, kstValues)
     }
 
     /**
@@ -84,9 +84,9 @@ class Kst(
      */
     private fun calculateSmoothedROC(rocPeriod: Int, window: Int): List<BigDecimal> {
         val closeList = close.toList()
-        val rocValues = Array<BigDecimal>(close.size()) { BigDecimal.ZERO }
+        val rocValues = Array<BigDecimal>(size) { BigDecimal.ZERO }
         val meanClose = closeList.reduce { acc, value -> acc.add(value) }
-            .divide(BigDecimal(closeList.size), 10, RoundingMode.HALF_UP)
+            .divide(BigDecimal(size), 10, RoundingMode.HALF_UP)
 
         for (i in closeList.indices) {
             val shiftValue = if (i >= rocPeriod) closeList[i - rocPeriod] else meanClose

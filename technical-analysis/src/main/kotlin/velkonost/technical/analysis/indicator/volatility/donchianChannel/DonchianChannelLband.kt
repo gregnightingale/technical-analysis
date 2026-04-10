@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.volatility.donchianChannel
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 class DonchianChannelLband(
@@ -13,12 +13,12 @@ class DonchianChannelLband(
     private val window: Int = 20,
     private val offset: Int = 0,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Dcl) {
+) : Indicator(IndicatorType.Dcl, close.size()) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         val lband = calculateRollingMin()
         return DataColumn.create(
-            name.title,
+            type.name,
             lband.toList().drop(offset).plus(List(offset) { BigDecimal.ZERO }).takeIf { offset != 0 } ?: lband
         )
     }

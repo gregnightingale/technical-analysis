@@ -3,7 +3,7 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class StochRsiMacd(
@@ -12,29 +12,27 @@ class StochRsiMacd(
     private val rsi: DataColumn<BigDecimal>,
     private val macd: DataColumn<BigDecimal>,
     private val macdSignal: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.StochRsiMacd) {
+) : Strategy(StrategyType.StochRsiMacd, fastd.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) fastd.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
         // Check for valid index boundaries
-        if (actualIndex < 3 ||
-            actualIndex >= fastd.size() ||
-            actualIndex >= fastk.size() ||
-            actualIndex >= rsi.size() ||
-            actualIndex >= macd.size() ||
-            actualIndex >= macdSignal.size()
+        if (index < 3 ||
+            index >= fastd.size() ||
+            index >= fastk.size() ||
+            index >= rsi.size() ||
+            index >= macd.size() ||
+            index >= macdSignal.size()
         ) {
             return StrategyDecision.Nothing
         }
 
         try {
-            val fastdCurrent = fastd[actualIndex]
-            val fastkCurrent = fastk[actualIndex]
-            val rsiCurrent = rsi[actualIndex]
-            val macdCurrent = macd[actualIndex]
-            val macdSignalCurrent = macdSignal[actualIndex]
+            val fastdCurrent = fastd[index]
+            val fastkCurrent = fastk[index]
+            val rsiCurrent = rsi[index]
+            val macdCurrent = macd[index]
+            val macdSignalCurrent = macdSignal[index]
 
             // Long Conditions
             val longCondition1 = (
@@ -42,35 +40,35 @@ class StochRsiMacd(
                             fastkCurrent < BigDecimal(20) &&
                             rsiCurrent > BigDecimal(50) &&
                             macdCurrent > macdSignalCurrent &&
-                            macd[actualIndex - 1] < macdSignal[actualIndex - 1]
+                            macd[index - 1] < macdSignal[index - 1]
                     )
 
             val longCondition2 = (
-                    fastd[actualIndex - 1] < BigDecimal(20) &&
-                            fastk[actualIndex - 1] < BigDecimal(20) &&
+                    fastd[index - 1] < BigDecimal(20) &&
+                            fastk[index - 1] < BigDecimal(20) &&
                             rsiCurrent > BigDecimal(50) &&
                             macdCurrent > macdSignalCurrent &&
-                            macd[actualIndex - 2] < macdSignal[actualIndex - 2] &&
+                            macd[index - 2] < macdSignal[index - 2] &&
                             fastdCurrent < BigDecimal(80) &&
                             fastkCurrent < BigDecimal(80)
                     )
 
             val longCondition3 = (
-                    fastd[actualIndex - 2] < BigDecimal(20) &&
-                            fastk[actualIndex - 2] < BigDecimal(20) &&
+                    fastd[index - 2] < BigDecimal(20) &&
+                            fastk[index - 2] < BigDecimal(20) &&
                             rsiCurrent > BigDecimal(50) &&
                             macdCurrent > macdSignalCurrent &&
-                            macd[actualIndex - 1] < macdSignal[actualIndex - 1] &&
+                            macd[index - 1] < macdSignal[index - 1] &&
                             fastdCurrent < BigDecimal(80) &&
                             fastkCurrent < BigDecimal(80)
                     )
 
             val longCondition4 = (
-                    fastd[actualIndex - 3] < BigDecimal(20) &&
-                            fastk[actualIndex - 3] < BigDecimal(20) &&
+                    fastd[index - 3] < BigDecimal(20) &&
+                            fastk[index - 3] < BigDecimal(20) &&
                             rsiCurrent > BigDecimal(50) &&
                             macdCurrent > macdSignalCurrent &&
-                            macd[actualIndex - 2] < macdSignal[actualIndex - 2] &&
+                            macd[index - 2] < macdSignal[index - 2] &&
                             fastdCurrent < BigDecimal(80) &&
                             fastkCurrent < BigDecimal(80)
                     )
@@ -85,35 +83,35 @@ class StochRsiMacd(
                             fastkCurrent > BigDecimal(80) &&
                             rsiCurrent < BigDecimal(50) &&
                             macdCurrent < macdSignalCurrent &&
-                            macd[actualIndex - 1] > macdSignal[actualIndex - 1]
+                            macd[index - 1] > macdSignal[index - 1]
                     )
 
             val shortCondition2 = (
-                    fastd[actualIndex - 1] > BigDecimal(80) &&
-                            fastk[actualIndex - 1] > BigDecimal(80) &&
+                    fastd[index - 1] > BigDecimal(80) &&
+                            fastk[index - 1] > BigDecimal(80) &&
                             rsiCurrent < BigDecimal(50) &&
                             macdCurrent < macdSignalCurrent &&
-                            macd[actualIndex - 2] > macdSignal[actualIndex - 2] &&
+                            macd[index - 2] > macdSignal[index - 2] &&
                             fastdCurrent > BigDecimal(20) &&
                             fastkCurrent > BigDecimal(20)
                     )
 
             val shortCondition3 = (
-                    fastd[actualIndex - 2] > BigDecimal(80) &&
-                            fastk[actualIndex - 2] > BigDecimal(80) &&
+                    fastd[index - 2] > BigDecimal(80) &&
+                            fastk[index - 2] > BigDecimal(80) &&
                             rsiCurrent < BigDecimal(50) &&
                             macdCurrent < macdSignalCurrent &&
-                            macd[actualIndex - 1] > macdSignal[actualIndex - 1] &&
+                            macd[index - 1] > macdSignal[index - 1] &&
                             fastdCurrent > BigDecimal(20) &&
                             fastkCurrent > BigDecimal(20)
                     )
 
             val shortCondition4 = (
-                    fastd[actualIndex - 3] > BigDecimal(80) &&
-                            fastk[actualIndex - 3] > BigDecimal(80) &&
+                    fastd[index - 3] > BigDecimal(80) &&
+                            fastk[index - 3] > BigDecimal(80) &&
                             rsiCurrent < BigDecimal(50) &&
                             macdCurrent < macdSignalCurrent &&
-                            macd[actualIndex - 2] > macdSignal[actualIndex - 2] &&
+                            macd[index - 2] > macdSignal[index - 2] &&
                             fastdCurrent > BigDecimal(20) &&
                             fastkCurrent > BigDecimal(20)
                     )

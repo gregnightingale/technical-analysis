@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volatility.keltnerChannel
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -63,7 +63,7 @@ class KeltnerChannelLbandIndicator(
     private val fillna: Boolean = false,
     private val originalVersion: Boolean = true,
     private val multiplier: Int = 2,
-) : Indicator(IndicatorName.Kcli), KeltnerChannel {
+) : Indicator(IndicatorType.Kcli, close.size()), KeltnerChannel {
 
     /**
      * Calculates the Keltner Channel Low Band signals.
@@ -86,6 +86,6 @@ class KeltnerChannelLbandIndicator(
             if (closeValue <= tpLow.toList()[index]) BigDecimal.ONE else BigDecimal.ZERO
         }
 
-        return DataColumn.create(name.title, result.toList())
+        return DataColumn.create(type.name, result.toList())
     }
 }

@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend.kst
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import velkonost.technical.analysis.indicator.trend.sma.SmaFast
 import java.math.BigDecimal
 
@@ -39,7 +39,7 @@ class KstSignal(
     private val window4: Int = 15,
     private val nsig: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.KstSignal) {
+) : Indicator(IndicatorType.KstSignal, close.size()) {
 
     /**
      * Calculates the KST Signal Line values.
@@ -53,7 +53,7 @@ class KstSignal(
         val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).calculate()
         val kstSignal = SmaFast(close).calculateSMA(kst, nsig)
 
-        return DataColumn.create(name.title, kstSignal.toList())
+        return DataColumn.create(type.name, kstSignal.toList())
     }
 
 }

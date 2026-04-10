@@ -50,10 +50,10 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            currentIndex = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long)")
     }
 
@@ -82,10 +82,10 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            currentIndex = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision, "Ожидается сигнал на продажу (Short)")
     }
 
@@ -103,10 +103,10 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            currentIndex = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала (Nothing)")
     }
 
@@ -124,10 +124,10 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            currentIndex = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при недостатке данных")
     }
 
@@ -156,10 +156,10 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            currentIndex = size - 1
+            backStep = size - 1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку в граничном случае")
     }
 }

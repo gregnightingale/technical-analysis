@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volume
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -37,7 +37,7 @@ class MFIIndicator(
     private val volume: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Mfi) {
+) : Indicator(IndicatorType.Mfi, close.size()) {
 
     override val skipTestResults = true
 
@@ -115,7 +115,7 @@ class MFIIndicator(
             mfiValues.add(mfi)
         }
 
-        return DataColumn.create(name.title, mfiValues)
+        return DataColumn.create(type.name, mfiValues)
     }
 
 }

@@ -1,8 +1,9 @@
 package velkonost.technical.analysis.indicator.momentum
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
+import org.jetbrains.kotlinx.dataframe.size
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -34,7 +35,7 @@ class TsiIndicator(
     private val windowSlow: Int = 25,
     private val windowFast: Int = 13,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Tsi) {
+) : Indicator(IndicatorType.Tsi, close.size()) {
 
     /**
      * Calculates the True Strength Index (TSI) values.
@@ -53,7 +54,7 @@ class TsiIndicator(
         val smoothed = diffClose.calculateEma(windowSlow).calculateEma(windowFast)
         val smoothedAbs = diffClose.map { it.abs() }.calculateEma(windowSlow).calculateEma(windowFast)
 
-        val result = Array<BigDecimal>(close.size()) { index ->
+        val result = Array<BigDecimal>(size) { index ->
             if (index == 0) BigDecimal.ZERO
             else {
                 val smooth = smoothed[index - 1]
@@ -66,6 +67,6 @@ class TsiIndicator(
             }
         }
 
-        return DataColumn.create(name.title, result.toList())
+        return DataColumn.create(type.name, result.toList())
     }
 }

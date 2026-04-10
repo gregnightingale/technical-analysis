@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.convertToBigDecimal
 import org.jetbrains.kotlinx.dataframe.api.cumSum
 import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -48,7 +48,7 @@ import java.math.BigDecimal
 class OnBalanceVolumeIndicator(
     private val close: DataColumn<BigDecimal>,
     private val volume: DataColumn<BigDecimal>,
-) : Indicator(IndicatorName.Obv) {
+) : Indicator(IndicatorType.Obv, close.size()) {
 
     /**
      * Calculates the On-Balance Volume (OBV) values.
@@ -81,7 +81,7 @@ class OnBalanceVolumeIndicator(
             previousClose = currentClose
         }
 
-        return DataColumn.create(name.title, obvValues).cumSum().convertToBigDecimal()
+        return DataColumn.create(type.name, obvValues).cumSum().convertToBigDecimal()
 
     }
 }

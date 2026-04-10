@@ -3,34 +3,33 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class TripleEma(
     private val ema3: DataColumn<BigDecimal>,
     private val ema6: DataColumn<BigDecimal>,
     private val ema9: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.TripleEma) {
+    private val backStep: Int = 0
+) : Strategy(StrategyType.TripleEma, ema3.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) ema3.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
         // Проверка валидности индексов
-        if (actualIndex < 4 ||
-            actualIndex >= ema3.size() ||
-            actualIndex >= ema6.size() ||
-            actualIndex >= ema9.size()
+        if (index < 4 ||
+            index >= ema3.size() ||
+            index >= ema6.size() ||
+            index >= ema9.size()
         ) {
             return StrategyDecision.Nothing
         }
 
         // Проверка условий для сигнала на продажу (Short)
         val isShortSignal = (4 downTo 1).all { i ->
-            ema3[actualIndex - i] > ema6[actualIndex - i] &&
-                    ema3[actualIndex - i] > ema9[actualIndex - i]
-        } && ema3[actualIndex] < ema6[actualIndex] &&
-                ema3[actualIndex] < ema9[actualIndex]
+            ema3[index - i] > ema6[index - i] &&
+                    ema3[index - i] > ema9[index - i]
+        } && ema3[index] < ema6[index] &&
+                ema3[index] < ema9[index]
 
         if (isShortSignal) {
             return StrategyDecision.Short
@@ -38,10 +37,10 @@ class TripleEma(
 
         // Проверка условий для сигнала на покупку (Long)
         val isLongSignal = (4 downTo 1).all { i ->
-            ema3[actualIndex - i] < ema6[actualIndex - i] &&
-                    ema3[actualIndex - i] < ema9[actualIndex - i]
-        } && ema3[actualIndex] > ema6[actualIndex] &&
-                ema3[actualIndex] > ema9[actualIndex]
+            ema3[index - i] < ema6[index - i] &&
+                    ema3[index - i] < ema9[index - i]
+        } && ema3[index] > ema6[index] &&
+                ema3[index] > ema9[index]
 
         if (isLongSignal) {
             return StrategyDecision.Long
@@ -49,4 +48,5 @@ class TripleEma(
 
         return StrategyDecision.Nothing
     }
+
 }

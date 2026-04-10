@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.volume
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -56,7 +56,7 @@ class NegativeVolumeIndexIndicator(
     private val close: DataColumn<BigDecimal>,
     private val volume: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Nvi) {
+) : Indicator(IndicatorType.Nvi, close.size()) {
 
     /**
      * Calculates the Negative Volume Index (NVI) values.
@@ -111,6 +111,6 @@ class NegativeVolumeIndexIndicator(
             }
         }
 
-        return DataColumn.create(name.title, nviValues.toList())
+        return DataColumn.create(type.name, nviValues.toList())
     }
 }

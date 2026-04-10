@@ -1,10 +1,11 @@
 package velkonost.technical.analysis.indicator.momentum
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
+import org.jetbrains.kotlinx.dataframe.size
 import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -50,7 +51,7 @@ class WilliamsRIndicator(
     private val close: DataColumn<BigDecimal>,
     private val lbp: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Wr) {
+) : Indicator(IndicatorType.Wr, close.size()) {
 
     /**
      * Calculates the Williams %R values.
@@ -70,13 +71,13 @@ class WilliamsRIndicator(
         val lowestLow = low.calculateRollingMin(lbp)
 
         // Вычисляем Williams %R
-        val wr = Array(close.size()) { i ->
+        val wr = Array(size) { i ->
             if (highestHigh[i] != lowestLow[i]) {
                 (highestHigh[i].subtract(close[i]))
                     .divide(highestHigh[i].subtract(lowestLow[i]), scale, RoundingMode.HALF_UP)
                     .multiply(BigDecimal(-100))
             } else BigDecimal(-50)
         }
-        return DataColumn.create(name.title, wr.toList())
+        return DataColumn.create(type.name, wr.toList())
     }
 }

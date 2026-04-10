@@ -1,9 +1,10 @@
 package velkonost.technical.analysis.strategy
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
+import org.jetbrains.kotlinx.dataframe.size
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class FibMacd(
@@ -14,14 +15,13 @@ class FibMacd(
     private val macdSignal: DataColumn<BigDecimal>,
     private val macd: DataColumn<BigDecimal>,
     private val ema200: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.FibMacd) {
+) : Strategy(StrategyType.FibMacd, close.size()) {
 
     var stopLossValue = BigDecimal.ZERO
     var takeProfitValue = BigDecimal.ZERO
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) close.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
+        
         var result = StrategyDecision.Nothing
 
         // Record peaks and troughs in the last 'period' timesteps
@@ -36,7 +36,7 @@ class FibMacd(
         val locationTroughs = mutableListOf<Int>()
 
         // Find peaks & troughs in 'close' prices
-        for (i in (actualIndex - period + 2) until (actualIndex - 2)) {
+        for (i in (index - period + 2) until (index - 2)) {
             if (i >= 2 && i < high.size() - 3) {
                 if (high[i] > high[i - 1] && high[i] > high[i + 1] &&
                     high[i] > high[i - 2] && high[i] > high[i + 2]
@@ -56,8 +56,8 @@ class FibMacd(
 
         // Determine the trend based on EMA200
         val trend = when {
-            close[actualIndex] < ema200[actualIndex] -> 0 // Downtrend
-            close[actualIndex] > ema200[actualIndex] -> 1 // Uptrend
+            close[index] < ema200[index] -> 0 // Downtrend
+            close[index] > ema200[index] -> 1 // Uptrend
             else -> -99 // Indeterminate
         }
 
@@ -114,23 +114,23 @@ class FibMacd(
             val fibLevels = calculateFibLevels(maxClose, minClose, isUptrend = true)
 
             // Calculate Fibonacci retracement levels (extensions)
-            val fibRetracements = calculateFibRetracements(maxClose, minClose, close[actualIndex], isUptrend = true)
+            val fibRetracements = calculateFibRetracements(maxClose, minClose, close[index], isUptrend = true)
 
             // Check for trade signals at each Fibonacci level
             for (level in 1 until fibLevels.size) {
-                val condition1 = fibLevels[level - 1] > low[actualIndex - 2] && low[actualIndex - 2] > fibLevels[level]
-                val condition2 = close[actualIndex - 3] > fibLevels[level]
-                val condition3 = close[actualIndex - 4] > fibLevels[level]
-                val condition4 = close[actualIndex - 6] > fibLevels[level]
+                val condition1 = fibLevels[level - 1] > low[index - 2] && low[index - 2] > fibLevels[level]
+                val condition2 = close[index - 3] > fibLevels[level]
+                val condition3 = close[index - 4] > fibLevels[level]
+                val condition4 = close[index - 6] > fibLevels[level]
 
                 if (condition1 && condition2 && condition3 && condition4) {
                     // Bullish Engulfing Candle and MACD cross up
-                    if (isBullishEngulfing(actualIndex, open, close) &&
-                        isMacdCrossUp(actualIndex, macdSignal, macd)
+                    if (isBullishEngulfing(index, open, close) &&
+                        isMacdCrossUp(index, macdSignal, macd)
                     ) {
                         result = StrategyDecision.Long
                         takeProfitValue = fibRetracements[level]
-                        stopLossValue = close[actualIndex] - fibLevels[level] * BigDecimal("1.0001")
+                        stopLossValue = close[index] - fibLevels[level] * BigDecimal("1.0001")
                         break
                     }
                 }
@@ -185,23 +185,23 @@ class FibMacd(
             val fibLevels = calculateFibLevels(maxClose, minClose, isUptrend = false)
 
             // Calculate Fibonacci retracement levels (extensions)
-            val fibRetracements = calculateFibRetracements(maxClose, minClose, close[actualIndex], isUptrend = false)
+            val fibRetracements = calculateFibRetracements(maxClose, minClose, close[index], isUptrend = false)
 
             // Check for trade signals at each Fibonacci level
             for (level in 1 until fibLevels.size) {
                 // Match the condition: fib_level_{n-1} < high[currentIndex - 2] < fib_level_n
-                if (fibLevels[level - 1] < high[actualIndex - 2] && high[actualIndex - 2] < fibLevels[level] &&
-                    close[actualIndex - 3] < fibLevels[level] &&
-                    close[actualIndex - 4] < fibLevels[level] &&
-                    close[actualIndex - 6] < fibLevels[level]
+                if (fibLevels[level - 1] < high[index - 2] && high[index - 2] < fibLevels[level] &&
+                    close[index - 3] < fibLevels[level] &&
+                    close[index - 4] < fibLevels[level] &&
+                    close[index - 6] < fibLevels[level]
                 ) {
                     // Bearish Engulfing Candle and MACD cross down
-                    if (isBearishEngulfing(actualIndex, open, close) &&
-                        isMacdCrossDown(actualIndex, macdSignal, macd)
+                    if (isBearishEngulfing(index, open, close) &&
+                        isMacdCrossDown(index, macdSignal, macd)
                     ) {
                         result = StrategyDecision.Short
                         takeProfitValue = fibRetracements[level]
-                        stopLossValue = fibLevels[level] * BigDecimal("1.0001") - close[actualIndex]
+                        stopLossValue = fibLevels[level] * BigDecimal("1.0001") - close[index]
                         break
                     }
                 }

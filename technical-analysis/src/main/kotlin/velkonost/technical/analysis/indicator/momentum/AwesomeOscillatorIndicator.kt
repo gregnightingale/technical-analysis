@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.momentum
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.movingAverage
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -58,7 +58,7 @@ class AwesomeOscillatorIndicator(
     private val window1: Int = 5,
     private val window2: Int = 34,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Ao) {
+) : Indicator(IndicatorType.Ao, high.size()) {
 
     /**
      * Calculates the Awesome Oscillator values.
@@ -85,6 +85,6 @@ class AwesomeOscillatorIndicator(
         val ao = Array(medianPrice.size) { i ->
             smaShort[i].subtract(smaLong[i])
         }
-        return DataColumn.create(name.title, ao.toList())
+        return DataColumn.create(type.name, ao.toList())
     }
 }

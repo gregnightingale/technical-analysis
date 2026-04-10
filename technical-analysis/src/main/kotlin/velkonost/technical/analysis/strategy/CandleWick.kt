@@ -3,38 +3,36 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class CandleWick(
     private val close: DataColumn<BigDecimal>,
     private val open: DataColumn<BigDecimal>,
     private val high: DataColumn<BigDecimal>,
-    private val low: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.CandleWick) {
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) close.size() - 1 else currentIndex
+    private val low: DataColumn<BigDecimal>
+) : Strategy(StrategyType.CandleWick, close.size()) {
 
-        // Check for valid index boundaries
-        if (actualIndex < 4 ||
-            actualIndex >= close.size() ||
-            actualIndex >= open.size() ||
-            actualIndex >= high.size() ||
-            actualIndex >= low.size()
+    override fun calculateAtIndex(index: Int): StrategyDecision {
+
+        if (index < 4 ||
+            index >= close.size() ||
+            index >= open.size() ||
+            index >= high.size() ||
+            index >= low.size()
         ) {
             return StrategyDecision.Nothing  // Index out of bounds or insufficient data
         }
 
         // Retrieve necessary values for calculations
-        val closeMinus4 = close[actualIndex - 4]
-        val closeMinus3 = close[actualIndex - 3]
-        val closeMinus2 = close[actualIndex - 2]
-        val closeMinus1 = close[actualIndex - 1]
-        val openMinus1 = open[actualIndex - 1]
-        val highMinus1 = high[actualIndex - 1]
-        val lowMinus1 = low[actualIndex - 1]
-        val closeCurrent = close[actualIndex]
+        val closeMinus4 = close[index - 4]
+        val closeMinus3 = close[index - 3]
+        val closeMinus2 = close[index - 2]
+        val closeMinus1 = close[index - 1]
+        val openMinus1 = open[index - 1]
+        val highMinus1 = high[index - 1]
+        val lowMinus1 = low[index - 1]
+        val closeCurrent = close[index]
 
         if (
             closeMinus4 < closeMinus3
@@ -60,4 +58,5 @@ class CandleWick(
 
         return StrategyDecision.Nothing
     }
+
 }

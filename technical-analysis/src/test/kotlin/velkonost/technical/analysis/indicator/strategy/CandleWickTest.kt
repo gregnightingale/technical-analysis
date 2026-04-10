@@ -45,10 +45,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -89,10 +89,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -133,10 +133,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -169,10 +169,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 2
+            backStep = 2
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -189,10 +189,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = -1
+            backStep = -1
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -233,10 +233,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -277,10 +277,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -321,10 +321,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -365,10 +365,10 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -409,11 +409,11 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            currentIndex = 4
+            backStep = 4
         )
 
         // Assuming the strategy should return Nothing for invalid data
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 }

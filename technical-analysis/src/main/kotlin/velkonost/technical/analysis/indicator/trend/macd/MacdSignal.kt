@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend.macd
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -29,7 +29,7 @@ class MacdSignal(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.MacdSignal) {
+) : Indicator(IndicatorType.MacdSignal, close.size()) {
 
     /**
      * Calculates the MACD Signal Line values.
@@ -42,6 +42,6 @@ class MacdSignal(
     override fun calculate(): DataColumn<BigDecimal> {
         val macd = Macd(close, windowSlow, windowFast, windowSign, fillna).calculate()
         val result = macd.calculateEma(windowSign)
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 }

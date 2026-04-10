@@ -72,11 +72,11 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that a LONG signal is generated
         assertEquals(StrategyDecision.Long, result, "Expected a LONG trade direction.")
@@ -146,11 +146,11 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that a SHORT signal is generated
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT trade direction.")
@@ -200,11 +200,11 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that no trade signal is generated
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade direction.")
@@ -238,11 +238,11 @@ class HeikinAshiEma2Test {
             fastd = DataColumn.create("fastd", MutableList(size) { BigDecimal.ZERO }),
             fastk = DataColumn.create("fastk", MutableList(size) { BigDecimal.ZERO }),
             ema200 = DataColumn.create("ema200", MutableList(size) { BigDecimal.ZERO }),
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that position should be closed
         assertEquals(StrategyDecision.Nothing, result, "Expected no new trade direction.")
@@ -276,11 +276,11 @@ class HeikinAshiEma2Test {
             fastd = DataColumn.create("fastd", MutableList(size) { BigDecimal.ZERO }),
             fastk = DataColumn.create("fastk", MutableList(size) { BigDecimal.ZERO }),
             ema200 = DataColumn.create("ema200", MutableList(size) { BigDecimal.ZERO }),
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that position should be closed
         assertEquals(StrategyDecision.Nothing, result, "Expected no new trade direction.")
@@ -320,11 +320,11 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            currentIndex = currentIndex
+            backStep = currentIndex
         )
 
         // Calculate the result
-        val result = strategy.calculate()
+        val result = strategy.calculateMostRecent()
 
         // Assert that no trade signal is generated due to insufficient data
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade direction due to insufficient data.")

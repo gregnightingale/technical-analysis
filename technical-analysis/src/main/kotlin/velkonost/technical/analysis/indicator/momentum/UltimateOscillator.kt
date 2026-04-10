@@ -4,7 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -50,7 +50,7 @@ class UltimateOscillator(
     private val weight2: BigDecimal = BigDecimal(2.0),
     private val weight3: BigDecimal = BigDecimal(1.0),
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Uo) {
+) : Indicator(IndicatorType.Uo, close.size()) {
 
     override val skipTestResults: Boolean
         get() = true
@@ -71,8 +71,8 @@ class UltimateOscillator(
         }.toList()
 
         val trueRange = calculateTrueRange(high, low, close)
-        val buyingPressure = Array(close.size()) { BigDecimal.ZERO }
-        for (i in 1 until close.size()) {
+        val buyingPressure = Array(size) { BigDecimal.ZERO }
+        for (i in 1 until size) {
             buyingPressure[i] = close[i].subtract(minOf(low[i], closeShift[i]))
         }
 
@@ -102,6 +102,6 @@ class UltimateOscillator(
                 .divide(weight1.add(weight2).add(weight3), scale, RoundingMode.HALF_UP)
                 .multiply(BigDecimal(100))
         }
-        return DataColumn.create(name.title, uo.toList())
+        return DataColumn.create(type.name, uo.toList())
     }
 }

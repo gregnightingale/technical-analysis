@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.momentum.stoch
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.extensions.movingAverage
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -34,7 +34,7 @@ class StochSignal(
     private val window: Int = 14,
     private val smoothWindow: Int = 3,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.StochSignal) {
+) : Indicator(IndicatorType.StochSignal, close.size()) {
 
     /**
      * Calculates the Stochastic Signal (%D) values.
@@ -48,6 +48,6 @@ class StochSignal(
         val stochK = Stoch(high, low, close, window, smoothWindow, fillna).calculate()
 
         val stochD = stochK.movingAverage(smoothWindow, skipUnderWindow = false)
-        return DataColumn.create(name.title, stochD.toList())
+        return DataColumn.create(type.name, stochD.toList())
     }
 }

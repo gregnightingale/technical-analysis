@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.extensions.fillNulls
 import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -40,7 +40,7 @@ class VolumeWeightedAveragePrice(
     private val volume: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Vwap) {
+) : Indicator(IndicatorType.Vwap, close.size()) {
 
     /**
      * Calculates the Volume Weighted Average Price (VWAP) values.
@@ -76,6 +76,6 @@ class VolumeWeightedAveragePrice(
         }
 
         val result = if (fillna) vwap.fillNulls(BigDecimal.ZERO) else vwap
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 }

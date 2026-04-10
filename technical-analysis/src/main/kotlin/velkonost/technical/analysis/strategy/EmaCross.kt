@@ -3,43 +3,39 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class EmaCross(
     private val emaShort: DataColumn<BigDecimal>,
-    private val emaLong: DataColumn<BigDecimal>,
-    private val backStep: Int = 0
-) : Strategy(StrategyName.EmaCross) {
+    private val emaLong: DataColumn<BigDecimal>
+) : Strategy(StrategyType.EmaCross, emaShort.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = emaShort.size() - 1 - backStep
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
-        // Проверка на корректность границ индексов
-        if (actualIndex < 4 || actualIndex >= emaShort.size() || actualIndex >= emaLong.size()) {
-            return StrategyDecision.Nothing  // Выход за пределы данных
+        if (index !in 4..<size || index >= size) {
+            return StrategyDecision.Nothing
         }
 
-        // Логика для направления SHORT
-        if (emaShort[actualIndex - 4] > emaLong[actualIndex - 4] &&
-            emaShort[actualIndex - 3] > emaLong[actualIndex - 3] &&
-            emaShort[actualIndex - 2] > emaLong[actualIndex - 2] &&
-            emaShort[actualIndex - 1] > emaLong[actualIndex - 1] &&
-            emaShort[actualIndex] < emaLong[actualIndex]
+        if (emaShort[index - 4] > emaLong[index - 4] &&
+            emaShort[index - 3] > emaLong[index - 3] &&
+            emaShort[index - 2] > emaLong[index - 2] &&
+            emaShort[index - 1] > emaLong[index - 1] &&
+            emaShort[index] < emaLong[index]
         ) {
             return StrategyDecision.Short
         }
 
-        // Логика для направления LONG
-        if (emaShort[actualIndex - 4] < emaLong[actualIndex - 4] &&
-            emaShort[actualIndex - 3] < emaLong[actualIndex - 3] &&
-            emaShort[actualIndex - 2] < emaLong[actualIndex - 2] &&
-            emaShort[actualIndex - 1] < emaLong[actualIndex - 1] &&
-            emaShort[actualIndex] > emaLong[actualIndex]
+        if (emaShort[index - 4] < emaLong[index - 4] &&
+            emaShort[index - 3] < emaLong[index - 3] &&
+            emaShort[index - 2] < emaLong[index - 2] &&
+            emaShort[index - 1] < emaLong[index - 1] &&
+            emaShort[index] > emaLong[index]
         ) {
             return StrategyDecision.Long
         }
 
         return StrategyDecision.Nothing
+
     }
 }

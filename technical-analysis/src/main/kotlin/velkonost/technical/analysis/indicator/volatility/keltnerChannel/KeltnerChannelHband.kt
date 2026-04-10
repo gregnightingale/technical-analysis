@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volatility.keltnerChannel
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -15,7 +15,7 @@ class KeltnerChannelHband(
     private val fillna: Boolean = false,
     private val originalVersion: Boolean = true,
     private val multiplier: Int = 2,
-) : Indicator(IndicatorName.Kch), KeltnerChannel {
+) : Indicator(IndicatorType.Kch, close.size()), KeltnerChannel {
 
 
     override fun calculate(): DataColumn<BigDecimal> {
@@ -33,7 +33,7 @@ class KeltnerChannelHband(
             }
         }
 
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 
 

@@ -3,7 +3,7 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class TripleEmaStochRsiAtr(
@@ -13,34 +13,33 @@ class TripleEmaStochRsiAtr(
     private val ema8: DataColumn<BigDecimal>,
     private val fastd: DataColumn<BigDecimal>,
     private val fastk: DataColumn<BigDecimal>,
-    private val currentPos: Int = -1
-) : Strategy(StrategyName.TripleEmaStochRsiAtr) {
+    private val backStep: Int = 0
+) : Strategy(StrategyType.TripleEmaStochRsiAtr, close.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentPos == -1) close.size() - 1 else currentPos
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
         // Ensure indices are valid and avoid IndexOutOfBoundsException
-        if (actualIndex < 1 ||
-            actualIndex >= close.size() ||
-            actualIndex >= ema50.size() ||
-            actualIndex >= ema14.size() ||
-            actualIndex >= ema8.size() ||
-            actualIndex >= fastd.size() ||
-            actualIndex >= fastk.size()
+        if (index < 1 ||
+            index >= close.size() ||
+            index >= ema50.size() ||
+            index >= ema14.size() ||
+            index >= ema8.size() ||
+            index >= fastd.size() ||
+            index >= fastk.size()
         ) {
             return StrategyDecision.Nothing
         }
 
         // Get current and previous values
-        val closeCurrent = close[actualIndex]
-        val ema8Current = ema8[actualIndex]
-        val ema14Current = ema14[actualIndex]
-        val ema50Current = ema50[actualIndex]
-        val fastkCurrent = fastk[actualIndex]
-        val fastdCurrent = fastd[actualIndex]
+        val closeCurrent = close[index]
+        val ema8Current = ema8[index]
+        val ema14Current = ema14[index]
+        val ema50Current = ema50[index]
+        val fastkCurrent = fastk[index]
+        val fastdCurrent = fastd[index]
 
-        val fastkPrev = fastk[actualIndex - 1]
-        val fastdPrev = fastd[actualIndex - 1]
+        val fastkPrev = fastk[index - 1]
+        val fastdPrev = fastd[index - 1]
 
         // Buy Signal
         val isBuySignal = closeCurrent > ema8Current && ema8Current > ema14Current && ema14Current > ema50Current &&
@@ -60,4 +59,5 @@ class TripleEmaStochRsiAtr(
 
         return StrategyDecision.Nothing
     }
+
 }

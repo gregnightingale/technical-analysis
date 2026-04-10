@@ -5,7 +5,7 @@ import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.extensions.rollingSum
 import velkonost.technical.analysis.extensions.safeDivide
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -53,7 +53,7 @@ class ChaikinMoneyFlowIndicator(
     private val volume: DataColumn<BigDecimal>,
     private val window: Int = 20,
     private val fillna: Boolean = false
-) : Indicator(IndicatorName.Cmf) {
+) : Indicator(IndicatorType.Cmf, close.size()) {
 
     /**
      * Calculates the Chaikin Money Flow (CMF) values.
@@ -83,7 +83,7 @@ class ChaikinMoneyFlowIndicator(
             moneyFlowSum.safeDivide(volumeSum)
         }
 
-        return DataColumn.create(name.title, cmfValues)
+        return DataColumn.create(type.name, cmfValues)
     }
 
     private fun calculateMoneyFlowMultiplier(): DataColumn<BigDecimal> {

@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volatility.bollingerBands
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -55,7 +55,7 @@ class BollingerBandsLbandIndicator(
     private val window: Int = 20,
     private val windowDev: Int = 2,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Bbli) {
+) : Indicator(IndicatorType.Bbli, close.size()) {
 
     /**
      * Calculates the Bollinger Bands Low Band signals.
@@ -78,6 +78,6 @@ class BollingerBandsLbandIndicator(
         val result = close.toList().mapIndexed { index, closeValue ->
             if (closeValue < lband[index]) BigDecimal.ONE else BigDecimal.ZERO
         }
-        return DataColumn.create(name.title, result.toList())
+        return DataColumn.create(type.name, result.toList())
     }
 }

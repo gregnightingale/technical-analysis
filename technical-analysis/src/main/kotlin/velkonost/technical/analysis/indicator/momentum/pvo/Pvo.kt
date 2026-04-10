@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.momentum.pvo
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -12,7 +12,7 @@ class Pvo(
     private val windowFast: Int = 12,
     private val windowSign: Int = 9,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Pvo) {
+) : Indicator(IndicatorType.Pvo, volume.size()) {
 
     override fun calculate(): DataColumn<BigDecimal> {
         // Вычисление быстрых и медленных EMA для объема
@@ -20,13 +20,13 @@ class Pvo(
         val emaSlow = volume.calculateEma(windowSlow)
 
         // Вычисление PVO
-        val pvo = Array(volume.size()) { i ->
+        val pvo = Array(size) { i ->
             if (emaSlow[i] != BigDecimal.ZERO) {
                 (emaFast[i].subtract(emaSlow[i]))
                     .divide(emaSlow[i], scale, RoundingMode.HALF_UP)
                     .multiply(BigDecimal(100))
             } else BigDecimal.ZERO
         }
-        return DataColumn.create(name.title, pvo.toList())
+        return DataColumn.create(type.name, pvo.toList())
     }
 }

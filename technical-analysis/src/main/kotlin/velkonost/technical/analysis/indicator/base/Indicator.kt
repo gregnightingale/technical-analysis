@@ -15,14 +15,14 @@ import java.math.RoundingMode
  * This class provides common functionality and utilities for calculating various technical indicators.
  * All specific indicators should extend this class and implement the calculate() method.
  *
- * @property name The name of the indicator, defined in IndicatorType enum
+ * @property type The name of the indicator, defined in IndicatorType enum
  * @property scale The decimal scale used for calculations (default: 10)
  */
 abstract class Indicator(
-    val name: IndicatorName,
+    val type: IndicatorType,
+    val size: Int,
     protected val scale: Int = 10
 ) {
-
     protected open val skipTestResults = false
 
     /**
@@ -31,13 +31,17 @@ abstract class Indicator(
      */
     abstract fun calculate(): DataColumn<BigDecimal>
 
+    /**
+     * this is only used by unit tests
+     * TODO: move it to test side
+     */
     fun isEqual(expectedDataframe: DataFrame<*>): Boolean {
         val errorPercentage = BigDecimal(0.03)
         val valueForSkip = BigDecimal(1.0e-6)
         var skipped = 0
 
         val actualData = calculate()
-        val expectedData: DataColumn<BigDecimal> = expectedDataframe.getColumn(name.title).cast()
+        val expectedData: DataColumn<BigDecimal> = expectedDataframe.getColumn(type.name).cast()
 
         val result = actualData.mapIndexed { index, actualValue ->
             val expectedValue = expectedData[index]
@@ -61,7 +65,7 @@ abstract class Indicator(
 
         val isEqual = !result.any { !it }
 
-        println("Is ${name.title.uppercase()} correct : $isEqual | skipped: $skipped")
+        println("Is ${type.title.uppercase()} correct : $isEqual | skipped: $skipped")
 
         return isEqual
     }

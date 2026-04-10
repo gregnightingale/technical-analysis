@@ -3,7 +3,7 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class HeikinAshiEma(
@@ -14,11 +14,10 @@ class HeikinAshiEma(
     private val ema200: DataColumn<BigDecimal>,
     private var closePos: Int = 0,
     private var currentPos: Int = -99,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.HeikinAshiEma) {
+    private val backStep: Int = 0
+) : Strategy(StrategyType.HeikinAshiEma, closeH.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) openStreamH.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
         var updatedTradeDirection = StrategyDecision.Nothing
         var updatedClosePos = closePos
@@ -31,21 +30,21 @@ class HeikinAshiEma(
             val longThreshold = BigDecimal("0.2")
 
             // Look for Shorts
-            if (fastk[actualIndex] > shortThreshold && fastd[actualIndex] > shortThreshold) {
+            if (fastk[index] > shortThreshold && fastd[index] > shortThreshold) {
                 // Check the last 10 candles
                 for (i in 10 downTo 3) {
-                    val idx = actualIndex - i
+                    val idx = index - i
                     if (idx < 0) continue
 
                     if (fastd[idx] >= shortThreshold && fastk[idx] >= shortThreshold) {
                         // Look for a cross within the next few candles
                         for (j in i downTo 3) {
-                            val crossIdx = actualIndex - j
+                            val crossIdx = index - j
                             if (crossIdx < 1) continue
 
                             if (fastk[crossIdx] > fastd[crossIdx] && fastk[crossIdx + 1] < fastd[crossIdx + 1]) {
                                 var flag = true
-                                for (r in crossIdx downTo (actualIndex - j + 1)) {
+                                for (r in crossIdx downTo (index - j + 1)) {
                                     if (fastk[r] < shortThreshold || fastd[r] < shortThreshold) {
                                         flag = false
                                         break
@@ -53,10 +52,10 @@ class HeikinAshiEma(
                                 }
 
                                 if (flag &&
-                                    closeH[actualIndex - 2] > ema200[actualIndex - 2] &&
-                                    closeH[actualIndex - 1] < ema200[actualIndex - 1]
+                                    closeH[index - 2] > ema200[index - 2] &&
+                                    closeH[index - 1] < ema200[index - 1]
                                 ) {
-                                    if (closeH[actualIndex] < openStreamH[actualIndex]) {
+                                    if (closeH[index] < openStreamH[index]) {
                                         // Bearish candle
                                         updatedTradeDirection = StrategyDecision.Short
                                     }
@@ -71,23 +70,23 @@ class HeikinAshiEma(
             }
 
             // Look for Longs
-            if (fastk[actualIndex] < longThreshold && fastd[actualIndex] < longThreshold) {
+            if (fastk[index] < longThreshold && fastd[index] < longThreshold) {
                 // Check the last 10 candles
                 for (i in 10 downTo 3) {
-                    val idx = actualIndex - i
+                    val idx = index - i
                     if (idx < 0) continue
 
                     if (fastd[idx] <= longThreshold && fastk[idx] <= longThreshold) {
                         // Look for a cross within the next few candles
                         for (j in i downTo 3) {
-                            val crossIdx = actualIndex - j
+                            val crossIdx = index - j
                             if (crossIdx < 1) continue
 
                             if (fastk[crossIdx] < fastd[crossIdx] && fastk[crossIdx + 1] > fastd[crossIdx + 1] &&
-                                fastk[actualIndex] < longThreshold && fastd[actualIndex] < longThreshold
+                                fastk[index] < longThreshold && fastd[index] < longThreshold
                             ) {
                                 var flag = true
-                                for (r in crossIdx downTo (actualIndex - j + 1)) {
+                                for (r in crossIdx downTo (index - j + 1)) {
                                     if (fastk[r] > longThreshold || fastd[r] > longThreshold) {
                                         flag = false
                                         break
@@ -95,10 +94,10 @@ class HeikinAshiEma(
                                 }
 
                                 if (flag &&
-                                    closeH[actualIndex - 2] < ema200[actualIndex - 2] &&
-                                    closeH[actualIndex - 1] > ema200[actualIndex - 1]
+                                    closeH[index - 2] < ema200[index - 2] &&
+                                    closeH[index - 1] > ema200[index - 1]
                                 ) {
-                                    if (closeH[actualIndex] > openStreamH[actualIndex]) {
+                                    if (closeH[index] > openStreamH[index]) {
                                         // Bullish candle
                                         updatedTradeDirection = StrategyDecision.Long
                                     }
@@ -114,12 +113,12 @@ class HeikinAshiEma(
         } else {
             when (currentPos) {
                 1 -> {
-                    if (closeH[actualIndex] < openStreamH[actualIndex]) {
+                    if (closeH[index] < openStreamH[index]) {
                         updatedClosePos = 1
                     }
                 }
                 0 -> {
-                    if (closePos.toBigDecimal() > openStreamH[actualIndex]) {
+                    if (closePos.toBigDecimal() > openStreamH[index]) {
                         updatedClosePos = 1
                     }
                 }

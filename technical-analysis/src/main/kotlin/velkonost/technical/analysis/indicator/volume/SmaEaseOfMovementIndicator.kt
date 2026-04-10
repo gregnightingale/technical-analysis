@@ -3,7 +3,7 @@ package velkonost.technical.analysis.indicator.volume
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.indices
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
@@ -62,7 +62,7 @@ class SmaEaseOfMovementIndicator(
     private val volume: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false
-) : Indicator(IndicatorName.SmaEm) {
+) : Indicator(IndicatorType.SmaEm, low.size()) {
 
     /**
      * Calculates the SMA-smoothed Ease of Movement (SMA EMV) values.
@@ -129,7 +129,7 @@ class SmaEaseOfMovementIndicator(
             sma.add(average)
         }
 
-        return DataColumn.create(name.title, sma)
+        return DataColumn.create(type.name, sma)
     }
 
 }

@@ -3,41 +3,40 @@ package velkonost.technical.analysis.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
-import velkonost.technical.analysis.strategy.base.StrategyName
+import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
 
 class EmaCrossover(
     private val emaShort: DataColumn<BigDecimal>,
     private val emaLong: DataColumn<BigDecimal>,
-    private val currentIndex: Int = -1
-) : Strategy(StrategyName.EmaCrossover) {
+) : Strategy(StrategyType.EmaCrossover, emaShort.size()) {
 
-    override fun calculate(): StrategyDecision {
-        val actualIndex = if (currentIndex == -1) emaShort.size() - 1 else currentIndex
+    override fun calculateAtIndex(index: Int): StrategyDecision {
 
-        // Check for valid index boundaries
-        if (actualIndex < 1 ||
-            actualIndex >= emaShort.size() ||
-            actualIndex >= emaLong.size()
+        if (index < 1 ||
+            index >= emaShort.size() ||
+            index >= emaLong.size()
         ) {
             return StrategyDecision.Nothing
         }
 
         // Previous EMA values
-        val emaShortPrev = emaShort[actualIndex - 1]
-        val emaLongPrev = emaLong[actualIndex - 1]
+        val emaShortPrev = emaShort[index - 1]
+        val emaLongPrev = emaLong[index - 1]
 
         // Current EMA values
-        val emaShortCurrent = emaShort[actualIndex]
-        val emaLongCurrent = emaLong[actualIndex]
+        val emaShortCurrent = emaShort[index]
+        val emaLongCurrent = emaLong[index]
 
         return when {
             emaShortPrev > emaLongPrev && emaShortCurrent < emaLongCurrent -> {
                 StrategyDecision.Short
             }
+
             emaShortPrev < emaLongPrev && emaShortCurrent > emaLongCurrent -> {
                 StrategyDecision.Long
             }
+
             else -> {
                 StrategyDecision.Nothing
             }

@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.volatility
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -34,7 +34,7 @@ class AverageTrueRange(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Atr) {
+) : Indicator(IndicatorType.Atr, close.size()) {
 
     /**
      * Calculates the Average True Range (ATR) values.
@@ -49,7 +49,7 @@ class AverageTrueRange(
     override fun calculate(): DataColumn<BigDecimal> {
         val trueRange = calculateTrueRange(high, low, close)
 
-        val atrValues = Array<BigDecimal>(close.size()) { BigDecimal.ZERO }
+        val atrValues = Array<BigDecimal>(size) { BigDecimal.ZERO }
         atrValues[window - 1] = (trueRange.take(window).reduce { acc, value -> acc.add(value) }
             .divide(BigDecimal(window), 10, RoundingMode.HALF_UP))
 
@@ -60,7 +60,7 @@ class AverageTrueRange(
             atrValues[i] = atrValue
         }
 
-        return DataColumn.create(name.title, atrValues.toList())
+        return DataColumn.create(type.name, atrValues.toList())
     }
 
 }

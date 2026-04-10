@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.other
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -50,7 +50,7 @@ import java.math.RoundingMode
 class CumulativeReturnIndicator(
     private val close: DataColumn<BigDecimal>,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.Cr) {
+) : Indicator(IndicatorType.Cr, close.size()) {
 
     /**
      * Calculates the cumulative return values.
@@ -66,8 +66,7 @@ class CumulativeReturnIndicator(
      */
     override fun calculate(): DataColumn<BigDecimal> {
         val closeValues = close.toList()
-        val cumulativeReturn = Array(closeValues.size) { BigDecimal.ZERO }
-
+        val cumulativeReturn = Array(size) { BigDecimal.ZERO }
         if (closeValues.isNotEmpty()) {
             val firstClose = closeValues[0]
             if (firstClose.compareTo(BigDecimal.ZERO) != 0) {
@@ -78,6 +77,6 @@ class CumulativeReturnIndicator(
                 }
             }
         }
-        return DataColumn.create(name.title, cumulativeReturn.toList())
+        return DataColumn.create(type.name, cumulativeReturn.toList())
     }
 }

@@ -3,7 +3,6 @@ package velkonost.technical.analysis.indicator.strategy
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import velkonost.technical.analysis.indicator.momentum.stoch.Stoch
 import velkonost.technical.analysis.strategy.StochBb
 import velkonost.technical.analysis.strategy.base.StrategyDecision
 import java.math.BigDecimal
@@ -52,7 +51,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long)")
     }
 
@@ -82,7 +81,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Short, decision, "Ожидается сигнал на продажу (Short)")
     }
 
@@ -102,7 +101,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала (Nothing)")
     }
 
@@ -122,7 +121,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при недостатке данных")
     }
 
@@ -152,7 +151,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку на граничных значениях")
     }
 
@@ -182,7 +181,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculate()
+        val decision = strategy.calculateMostRecent()
         // Ожидается сигнал на покупку из-за резкого изменения
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку после резкого изменения")
     }

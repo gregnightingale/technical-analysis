@@ -2,7 +2,7 @@ package velkonost.technical.analysis.indicator.trend.aroon
 
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import velkonost.technical.analysis.indicator.base.Indicator
-import velkonost.technical.analysis.indicator.base.IndicatorName
+import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
 /**
@@ -29,7 +29,7 @@ class AroonUp(
     private val low: DataColumn<BigDecimal>,
     private val window: Int = 25,
     private val fillna: Boolean = false,
-) : Indicator(IndicatorName.AroonUp), Aroon {
+) : Indicator(IndicatorType.AroonUp, high.size()), Aroon {
 
     /**
      * Calculates the Aroon Up values.
@@ -42,6 +42,6 @@ class AroonUp(
      */
     override fun calculate(): DataColumn<BigDecimal> {
         val result = high.toList().calculateAroon(window, true)
-        return DataColumn.create(name.title, result)
+        return DataColumn.create(type.name, result)
     }
 }
