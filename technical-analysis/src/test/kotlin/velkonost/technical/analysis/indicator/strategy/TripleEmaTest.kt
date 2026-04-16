@@ -14,9 +14,9 @@ class TripleEmaTest {
         ema6Values: List<BigDecimal>,
         ema9Values: List<BigDecimal>
     ): Map<String, DataColumn<BigDecimal>> {
-        val ema3 = DataColumn.create("ema3", ema3Values)
-        val ema6 = DataColumn.create("ema6", ema6Values)
-        val ema9 = DataColumn.create("ema9", ema9Values)
+        val ema3 = DataColumn.createValueColumn("ema3", ema3Values)
+        val ema6 = DataColumn.createValueColumn("ema6", ema6Values)
+        val ema9 = DataColumn.createValueColumn("ema9", ema9Values)
 
         return mapOf(
             "ema3" to ema3,

@@ -47,6 +47,6 @@ class AroonIndicator(
         val result = aroonUp.zip(aroonDown) { up, down ->
             up.subtract(down)
         }
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

@@ -54,7 +54,7 @@ class DpoIndicator(
         val dpoValues = closeShift.mapIndexed { index, shiftedValue ->
             shiftedValue.subtract(rollingMean[index]).setScale(10, RoundingMode.HALF_UP)
         }
-        return DataColumn.create(type.name, dpoValues)
+        return DataColumn.createValueColumn(type.name, dpoValues)
     }
 
     /**

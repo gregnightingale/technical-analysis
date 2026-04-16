@@ -12,8 +12,7 @@ class EmaCross(
 ) : Strategy(StrategyType.EmaCross, emaShort.size()) {
 
     override fun calculateAtIndex(index: Int): StrategyDecision {
-
-        if (index !in 4..<size || index >= size) {
+        if (index !in 4..<size) {
             return StrategyDecision.Nothing
         }
 
@@ -34,8 +33,6 @@ class EmaCross(
         ) {
             return StrategyDecision.Long
         }
-
         return StrategyDecision.Nothing
-
     }
 }

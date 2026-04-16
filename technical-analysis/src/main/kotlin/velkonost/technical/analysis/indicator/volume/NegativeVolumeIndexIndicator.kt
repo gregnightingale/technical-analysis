@@ -111,6 +111,6 @@ class NegativeVolumeIndexIndicator(
             }
         }
 
-        return DataColumn.create(type.name, nviValues.toList())
+        return DataColumn.createValueColumn(type.name, nviValues.toList())
     }
 }

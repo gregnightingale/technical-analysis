@@ -18,6 +18,6 @@ class VortexDiff(
         val vin = VortexNegative(high, low, close, window, fillna).calculate()
 
         val diff = vip.toList().zip(vin.toList()) { vipValue, vinValue -> vipValue.subtract(vinValue) }
-        return DataColumn.create(type.name, diff)
+        return DataColumn.createValueColumn(type.name, diff)
     }
 }

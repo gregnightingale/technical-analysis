@@ -85,6 +85,6 @@ class AwesomeOscillatorIndicator(
         val ao = Array(medianPrice.size) { i ->
             smaShort[i].subtract(smaLong[i])
         }
-        return DataColumn.create(type.name, ao.toList())
+        return DataColumn.createValueColumn(type.name, ao.toList())
     }
 }

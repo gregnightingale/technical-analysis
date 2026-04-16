@@ -90,6 +90,6 @@ class STCIndicator(
         }
 
         val stc = stochKD.calculateEma(smooth2)
-        return DataColumn.create(type.name, stc)
+        return DataColumn.createValueColumn(type.name, stc)
     }
 }

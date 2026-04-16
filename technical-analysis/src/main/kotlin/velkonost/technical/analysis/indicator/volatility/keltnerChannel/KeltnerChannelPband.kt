@@ -38,7 +38,7 @@ class KeltnerChannelPband(
             result.add(value)
         }
 
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 
 

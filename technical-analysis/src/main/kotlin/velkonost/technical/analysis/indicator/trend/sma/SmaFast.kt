@@ -13,6 +13,6 @@ class SmaFast(
 
     override fun calculate(): DataColumn<BigDecimal> {
         val result = calculateSMA(close, window)
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

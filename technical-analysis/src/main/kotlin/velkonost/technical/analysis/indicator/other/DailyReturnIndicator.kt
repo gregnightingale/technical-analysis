@@ -70,6 +70,6 @@ class DailyReturnIndicator(
                     .multiply(BigDecimal(100))
             }
         }
-        return DataColumn.create(type.name, dailyReturn.toList())
+        return DataColumn.createValueColumn(type.name, dailyReturn.toList())
     }
 }

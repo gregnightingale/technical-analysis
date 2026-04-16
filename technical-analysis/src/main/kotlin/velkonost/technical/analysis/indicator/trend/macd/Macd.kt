@@ -20,6 +20,6 @@ class Macd(
         val result = emaFast.toList().zip(emaSlow.toList()) { fast, slow ->
             fast.subtract(slow)
         }
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

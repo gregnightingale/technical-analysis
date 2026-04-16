@@ -17,6 +17,6 @@ class PvoSignal(
         val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).calculate()
         val pvoSignal = pvo.calculateEma(windowSign)
 
-        return DataColumn.create(type.name, pvoSignal.toList())
+        return DataColumn.createValueColumn(type.name, pvoSignal.toList())
     }
 }

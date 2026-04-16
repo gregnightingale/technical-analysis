@@ -17,11 +17,11 @@ class RsiStochEmaTest {
         fastkValues: List<BigDecimal>,
         fastdValues: List<BigDecimal>
     ): Pair<Map<String, DataColumn<BigDecimal>>, Int> {
-        val close = DataColumn.create("close", closeValues)
-        val ema200 = DataColumn.create("ema200", ema200Values)
-        val rsiSignal = DataColumn.create("rsiSignal", rsiValues)
-        val fastk = DataColumn.create("fastk", fastkValues)
-        val fastd = DataColumn.create("fastd", fastdValues)
+        val close = DataColumn.createValueColumn("close", closeValues)
+        val ema200 = DataColumn.createValueColumn("ema200", ema200Values)
+        val rsiSignal = DataColumn.createValueColumn("rsiSignal", rsiValues)
+        val fastk = DataColumn.createValueColumn("fastk", fastkValues)
+        val fastd = DataColumn.createValueColumn("fastd", fastdValues)
 
         val data = mapOf(
             "close" to close,
@@ -37,7 +37,7 @@ class RsiStochEmaTest {
 
     @Test
     fun testComplexDataWithLongSignal() {
-        // Генерация сложных данных
+        // Complex Data Generation
         val size = 200
         val closeValues = mutableListOf<BigDecimal>()
         val ema200Values = mutableListOf<BigDecimal>()
@@ -45,7 +45,7 @@ class RsiStochEmaTest {
         val fastkValues = mutableListOf<BigDecimal>()
         val fastdValues = mutableListOf<BigDecimal>()
 
-        // Генерация данных для нисходящего тренда
+        // Generating Data for a Downtrend
         for (i in 0 until 100) {
             closeValues.add(BigDecimal(150 - i * 0.5)) // Цена снижается
             ema200Values.add(BigDecimal(150 - i * 0.4)) // EMA200 снижается медленнее
@@ -54,7 +54,7 @@ class RsiStochEmaTest {
             fastdValues.add(BigDecimal(80 - i * 0.35)) // FastD снижается медленнее
         }
 
-        // Создание сигналов на продажу на ранних индексах
+        // Generating Sell Signals on Early Indices
         val peakIndices = listOf(80, 85, 90)
         for (index in peakIndices) {
             rsiValues[index] = BigDecimal(60 - (index - 80)) // RSI снижается на пиках
@@ -64,13 +64,13 @@ class RsiStochEmaTest {
             // Скорректированная формула для цены
             closeValues[index] = BigDecimal(110 + (index - 80) * 0.3)
         }
-        // FastK и FastD пересекаются сверху вниз
+        // FastK and FastD cross from top to bottom.
         fastkValues[90] = BigDecimal(30)
         fastdValues[90] = BigDecimal(35)
         fastkValues[89] = BigDecimal(40)
         fastdValues[89] = BigDecimal(38)
 
-        // Генерация данных для восходящего тренда
+        // Generating Data for an Uptrend
         for (i in 100 until size) {
             val index = i - 100
             closeValues.add(BigDecimal(100 + index * 0.7)) // Цена растет
@@ -80,7 +80,7 @@ class RsiStochEmaTest {
             fastdValues.add(BigDecimal(20 + index * 0.35)) // FastD растет медленнее
         }
 
-        // Создание сигналов на покупку на последних индексах
+        // Generating Buy Signals Based on the Latest Indices
         val troughIndices = listOf(180, 185, 190)
         for (index in troughIndices) {
             val adjustedIndex = index
@@ -90,17 +90,17 @@ class RsiStochEmaTest {
             rsiValues[adjustedIndex - 1] = rsiValues[adjustedIndex] + BigDecimal(2)
             rsiValues[adjustedIndex + 1] = rsiValues[adjustedIndex] + BigDecimal(2)
         }
-        // FastK и FastD пересекаются снизу вверх
+        // FastK and FastD cross from the bottom up.
         fastkValues[size - 1] = BigDecimal(70)
         fastdValues[size - 1] = BigDecimal(65)
         fastkValues[size - 2] = BigDecimal(60)
         fastdValues[size - 2] = BigDecimal(62)
 
-        // Цена выше EMA200 на последнем индексе
+        // The price is above the EMA200 on the latest index.
         closeValues[size - 1] = BigDecimal(140)
         ema200Values[size - 1] = BigDecimal(130)
 
-        // Создание DataColumn и вызов стратегии
+        // Creating a DataColumn and Invoking a Strategy
         val (data, actualIndex) = generateTestData(
             size,
             closeValues,
@@ -119,10 +119,10 @@ class RsiStochEmaTest {
             backStep = 90
         )
 
-        val earlyDecision = strategy.calculateMostRecent()
-        assertEquals(StrategyDecision.Short, earlyDecision, "Ожидается сигнал на продажу (Short) на индексе 90")
+        val earlyDecision = strategy.calculateAtIndex(90)
+        assertEquals(StrategyDecision.Short, earlyDecision, "A sell signal (Short) is expected at index level 90.")
 
-        // Проверка сигнала на покупку на последнем индексе
+        // Verifying the buy signal on the latest index
         val earlyStrategy = RsiStochEma(
             close = data["close"]!!,
             ema200 = data["ema200"]!!,
@@ -136,7 +136,7 @@ class RsiStochEmaTest {
 
     @Test
     fun testBullishDivergence() {
-        // Генерация данных для бычьей дивергенции
+        // Generating Data for Bullish Divergence
         val size = 100
         val closeValues = mutableListOf<BigDecimal>()
         val ema200Values = mutableListOf<BigDecimal>()
@@ -144,7 +144,7 @@ class RsiStochEmaTest {
         val fastkValues = mutableListOf<BigDecimal>()
         val fastdValues = mutableListOf<BigDecimal>()
 
-        // Инициализация данных
+        // Data Initialization
         for (i in 0 until size) {
             closeValues.add(BigDecimal(100 - i * 0.1)) // Цена снижается
             ema200Values.add(BigDecimal(90)) // ema200 ниже текущей цены

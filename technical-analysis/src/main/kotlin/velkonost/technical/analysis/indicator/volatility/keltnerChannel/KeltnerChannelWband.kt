@@ -31,7 +31,7 @@ class KeltnerChannelWband(
                 .multiply(BigDecimal(100))
         }
 
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 
 

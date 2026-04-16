@@ -32,6 +32,6 @@ class BollingerBandsWband(
                 result.add(BigDecimal.ZERO)
             }
         }
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

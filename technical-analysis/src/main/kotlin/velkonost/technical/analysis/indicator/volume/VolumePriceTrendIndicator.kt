@@ -52,7 +52,7 @@ class VolumePriceTrendIndicator(
     override fun calculate(): DataColumn<BigDecimal> {
         val size = close.size()
         if (size < 2) {
-            return DataColumn.create(type.name, listOf(BigDecimal.ZERO))
+            return DataColumn.createValueColumn(type.name, listOf(BigDecimal.ZERO))
         }
 
         val pctChange = Array(size) { BigDecimal.ZERO }
@@ -79,6 +79,6 @@ class VolumePriceTrendIndicator(
             vpt = vpt.filterNot { it == BigDecimal.ZERO }.toTypedArray()
         }
 
-        return DataColumn.create(type.name, vpt.asList())
+        return DataColumn.createValueColumn(type.name, vpt.asList())
     }
 }

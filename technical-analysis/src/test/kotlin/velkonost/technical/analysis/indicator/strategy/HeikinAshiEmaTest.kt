@@ -15,11 +15,11 @@ class HeikinAshiEmaTest {
         fastkValues: List<BigDecimal>,
         ema200Values: List<BigDecimal>
     ): Map<String, DataColumn<BigDecimal>> {
-        val openStreamH = DataColumn.create("openStreamH", openStreamHValues)
-        val closeH = DataColumn.create("closeH", closeHValues)
-        val fastd = DataColumn.create("fastd", fastdValues)
-        val fastk = DataColumn.create("fastk", fastkValues)
-        val ema200 = DataColumn.create("ema200", ema200Values)
+        val openStreamH = DataColumn.createValueColumn("openStreamH", openStreamHValues)
+        val closeH = DataColumn.createValueColumn("closeH", closeHValues)
+        val fastd = DataColumn.createValueColumn("fastd", fastdValues)
+        val fastk = DataColumn.createValueColumn("fastk", fastkValues)
+        val ema200 = DataColumn.createValueColumn("ema200", ema200Values)
 
         return mapOf(
             "openStreamH" to openStreamH,

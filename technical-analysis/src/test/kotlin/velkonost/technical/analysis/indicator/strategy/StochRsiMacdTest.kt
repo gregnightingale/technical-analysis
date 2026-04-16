@@ -57,7 +57,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -113,7 +112,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -166,7 +164,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -209,7 +206,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 2
         )
 
         val decision = strategy.calculateMostRecent()
@@ -232,7 +228,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -289,7 +284,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -344,7 +338,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -397,7 +390,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -451,7 +443,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -505,7 +496,6 @@ class StochRsiMacdTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
             macd = DataColumn.createValueColumn("macd", macdValues),
             macdSignal = DataColumn.createValueColumn("macdSignal", macdSignalValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()

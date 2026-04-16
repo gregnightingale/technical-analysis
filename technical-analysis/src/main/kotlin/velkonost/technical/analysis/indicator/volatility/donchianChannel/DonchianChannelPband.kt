@@ -24,7 +24,7 @@ class DonchianChannelPband(
                 .divide(hband.toList()[index].subtract(lband.toList()[index]), 10, RoundingMode.HALF_UP)
         }
 
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             type.name,
             pband.drop(offset).plus(List(offset) { BigDecimal.ZERO }).takeIf { offset != 0 } ?: pband
         )

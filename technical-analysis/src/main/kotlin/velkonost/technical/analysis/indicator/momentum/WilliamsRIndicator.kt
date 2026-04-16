@@ -78,6 +78,6 @@ class WilliamsRIndicator(
                     .multiply(BigDecimal(-100))
             } else BigDecimal(-50)
         }
-        return DataColumn.create(type.name, wr.toList())
+        return DataColumn.createValueColumn(type.name, wr.toList())
     }
 }

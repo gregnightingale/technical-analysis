@@ -14,9 +14,9 @@ class StochBbTest {
         fastkValues: List<BigDecimal>,
         percentBValues: List<BigDecimal>
     ): Map<String, DataColumn<BigDecimal>> {
-        val fastd = DataColumn.create("fastd", fastdValues)
-        val fastk = DataColumn.create("fastk", fastkValues)
-        val percentB = DataColumn.create("percentB", percentBValues)
+        val fastd = DataColumn.createValueColumn("fastd", fastdValues)
+        val fastk = DataColumn.createValueColumn("fastk", fastkValues)
+        val percentB = DataColumn.createValueColumn("percentB", percentBValues)
 
         return mapOf(
             "fastd" to fastd,

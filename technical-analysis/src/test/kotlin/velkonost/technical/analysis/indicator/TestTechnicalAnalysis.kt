@@ -23,7 +23,7 @@ object TestTechnicalAnalysis {
 
     init {
         val inputStream = this::class.java.getResourceAsStream(RESULT_FILE_PATH)
-            ?: throw FileNotFoundException("Ресурс '$RESULT_FILE_PATH' не найден.")
+            ?: throw FileNotFoundException("Resource'$RESULT_FILE_PATH' not found.")
         dataframe = DataFrame.readCSV(
             stream = inputStream,
             colTypes = CsvColumn.entries.associate { it.name to it.type }
@@ -35,4 +35,8 @@ object TestTechnicalAnalysis {
         volumeColumn = dataframe.getColumn(CsvColumn.Volume_BTC.name).cast()
     }
 
+    private fun String.toIndicatorTypeName(): String =
+        IndicatorType.entries.first {
+            this == it.title
+        }.name
 }

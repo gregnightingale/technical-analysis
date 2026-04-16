@@ -60,7 +60,7 @@ class AverageTrueRange(
             atrValues[i] = atrValue
         }
 
-        return DataColumn.create(type.name, atrValues.toList())
+        return DataColumn.createValueColumn(type.name, atrValues.toList())
     }
 
 }

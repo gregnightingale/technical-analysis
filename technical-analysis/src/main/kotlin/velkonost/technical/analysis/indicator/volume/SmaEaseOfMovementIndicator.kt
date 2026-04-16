@@ -129,7 +129,7 @@ class SmaEaseOfMovementIndicator(
             sma.add(average)
         }
 
-        return DataColumn.create(type.name, sma)
+        return DataColumn.createValueColumn(type.name, sma)
     }
 
 }

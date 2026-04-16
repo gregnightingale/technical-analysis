@@ -21,6 +21,6 @@ class BollingerBandsHband(
         val result = mavg.mapIndexed { index, avg ->
             avg.add(mstd[index].multiply(BigDecimal(windowDev)).setScale(10, RoundingMode.HALF_UP))
         }
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

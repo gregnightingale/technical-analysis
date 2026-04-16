@@ -23,6 +23,6 @@ class Ema(
         }
         ema[0] = series[0]
 
-        return DataColumn.create("EMA_$periods", ema.toList())
+        return DataColumn.createValueColumn("EMA_$periods", ema.toList())
     }
 }

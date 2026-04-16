@@ -45,7 +45,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -89,7 +88,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -133,7 +131,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -169,7 +166,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 2
         )
 
         val decision = strategy.calculateMostRecent()
@@ -189,7 +185,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -233,7 +228,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -277,7 +271,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -321,7 +314,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -365,7 +357,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -409,7 +400,6 @@ class CandleWickTest {
             open = DataColumn.createValueColumn("open", openValues),
             high = DataColumn.createValueColumn("high", highValues),
             low = DataColumn.createValueColumn("low", lowValues),
-            backStep = 4
         )
 
         // Assuming the strategy should return Nothing for invalid data

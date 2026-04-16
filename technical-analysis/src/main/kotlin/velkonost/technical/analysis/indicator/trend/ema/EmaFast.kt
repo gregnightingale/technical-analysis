@@ -13,6 +13,6 @@ class EmaFast(
 
     override fun calculate(): DataColumn<BigDecimal> {
         val result = close.calculateEma(window)
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

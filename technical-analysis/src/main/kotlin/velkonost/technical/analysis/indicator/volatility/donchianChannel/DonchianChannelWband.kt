@@ -24,7 +24,7 @@ class DonchianChannelWband(
             (high.subtract(low)).divide(avg, 10, RoundingMode.HALF_UP).multiply(BigDecimal(100))
         }
 
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             type.name,
             wband.drop(offset).plus(List(offset) { BigDecimal.ZERO }).takeIf { offset != 0 } ?: wband
         )

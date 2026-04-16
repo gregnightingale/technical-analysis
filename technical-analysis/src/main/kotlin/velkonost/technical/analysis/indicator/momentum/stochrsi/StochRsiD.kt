@@ -46,6 +46,6 @@ class StochRsiD(
     override fun calculate(): DataColumn<BigDecimal> {
         val stochRsiK = StochRsiK(close, window, smooth1, smooth2, fillna).calculate()
         val result = calculateSMA(stochRsiK, smooth2)
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

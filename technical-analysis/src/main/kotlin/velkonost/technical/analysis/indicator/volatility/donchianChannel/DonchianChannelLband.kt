@@ -17,7 +17,7 @@ class DonchianChannelLband(
 
     override fun calculate(): DataColumn<BigDecimal> {
         val lband = calculateRollingMin()
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             type.name,
             lband.toList().drop(offset).plus(List(offset) { BigDecimal.ZERO }).takeIf { offset != 0 } ?: lband
         )

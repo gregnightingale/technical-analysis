@@ -26,7 +26,7 @@ class BollingerBandsMstd(
             rollingStd[i] = BigDecimal(sqrt(variance.toDouble()))
         }
 
-        return DataColumn.create("mstd", rollingStd.toList())
+        return DataColumn.createValueColumn("mstd", rollingStd.toList())
     }
 
 }

@@ -30,6 +30,6 @@ class BollingerBandsPband(
                 BigDecimal.ZERO
             }
         }
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

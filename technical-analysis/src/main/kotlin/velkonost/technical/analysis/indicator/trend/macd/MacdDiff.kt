@@ -19,6 +19,6 @@ class MacdDiff(
         val result = macd.toList().zip(macdSignal.toList()) { macdVal, signalVal ->
             macdVal.subtract(signalVal)
         }
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

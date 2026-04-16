@@ -70,7 +70,7 @@ class ForceIndexIndicator(
     override fun calculate(): DataColumn<BigDecimal> {
         val fi = calculateForceIndex1()
         val fiAfterEma = Ema(fi, window).calculate()
-        return DataColumn.create(type.name, fiAfterEma.toList())
+        return DataColumn.createValueColumn(type.name, fiAfterEma.toList())
     }
 
     /**
@@ -91,7 +91,7 @@ class ForceIndexIndicator(
             val priceChange = close[i].subtract(close[i - 1])
             fi1[i] = priceChange.multiply(volume[i])
         }
-        return DataColumn.create(type.name, fi1.toList())
+        return DataColumn.createValueColumn(type.name, fi1.toList())
     }
 
 }

@@ -32,7 +32,7 @@ class KeltnerChannelLband(
             }
         }
 
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 
 

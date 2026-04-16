@@ -62,6 +62,6 @@ class VortexNegative(
 
         val vmmSum = vmm.rollingSum(window)
         val result = vmmSum.mapIndexed { i, value -> value.divide(trueRangeSum[i], 10, RoundingMode.HALF_UP) }
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

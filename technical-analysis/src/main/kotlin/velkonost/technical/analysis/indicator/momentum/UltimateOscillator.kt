@@ -102,6 +102,6 @@ class UltimateOscillator(
                 .divide(weight1.add(weight2).add(weight3), scale, RoundingMode.HALF_UP)
                 .multiply(BigDecimal(100))
         }
-        return DataColumn.create(type.name, uo.toList())
+        return DataColumn.createValueColumn(type.name, uo.toList())
     }
 }

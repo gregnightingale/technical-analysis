@@ -83,11 +83,11 @@ class ChaikinMoneyFlowIndicator(
             moneyFlowSum.safeDivide(volumeSum)
         }
 
-        return DataColumn.create(type.name, cmfValues)
+        return DataColumn.createValueColumn(type.name, cmfValues)
     }
 
     private fun calculateMoneyFlowMultiplier(): DataColumn<BigDecimal> {
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             "Multiplier",
             close.indices.map { index ->
                 val closeValue = close[index]
@@ -103,7 +103,7 @@ class ChaikinMoneyFlowIndicator(
     }
 
     private fun calculateMoneyFlowVolume(multiplier: DataColumn<BigDecimal>): DataColumn<BigDecimal> {
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             "Volume",
             multiplier.indices.map { index ->
                 multiplier[index].multiply(volume[index])

@@ -88,7 +88,7 @@ class UlcerIndex(
 
         }.calculateUlcerIndexRolling()
 
-        return DataColumn.create(type.name, ulcerValues)
+        return DataColumn.createValueColumn(type.name, ulcerValues)
     }
 
     /**

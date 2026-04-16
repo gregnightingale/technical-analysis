@@ -67,6 +67,6 @@ class MassIndex(
         }
 
         val rollingSum = massValues.rollingSum(windowSlow)
-        return DataColumn.create(type.name, rollingSum)
+        return DataColumn.createValueColumn(type.name, rollingSum)
     }
 }

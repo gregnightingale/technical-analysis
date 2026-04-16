@@ -53,7 +53,7 @@ class KstSignal(
         val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).calculate()
         val kstSignal = SmaFast(close).calculateSMA(kst, nsig)
 
-        return DataColumn.create(type.name, kstSignal.toList())
+        return DataColumn.createValueColumn(type.name, kstSignal.toList())
     }
 
 }

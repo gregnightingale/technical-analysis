@@ -129,6 +129,6 @@ class DailyLogReturnIndicator(
                     .multiply(BigDecimal(100))
             }
         }
-        return DataColumn.create(type.name, dailyLogReturn.toList())
+        return DataColumn.createValueColumn(type.name, dailyLogReturn.toList())
     }
 }

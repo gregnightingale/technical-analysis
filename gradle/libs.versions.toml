@@ -1,9 +1,9 @@
 [versions]
 technical-analysis = "1.1.0"
-kotlin = "2.0.0"
+kotlin = "2.2.21"
 
 multik = "0.2.3"
-dataframe = "0.13.1"
+dataframe = "1.0.0-Beta4"
 
 jupiter = "5.8.1"
 kmm-publish = "0.32.0"

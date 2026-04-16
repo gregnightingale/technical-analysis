@@ -77,6 +77,6 @@ class CumulativeReturnIndicator(
                 }
             }
         }
-        return DataColumn.create(type.name, cumulativeReturn.toList())
+        return DataColumn.createValueColumn(type.name, cumulativeReturn.toList())
     }
 }

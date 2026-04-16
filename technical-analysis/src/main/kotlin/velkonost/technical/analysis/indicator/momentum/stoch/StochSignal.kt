@@ -48,6 +48,6 @@ class StochSignal(
         val stochK = Stoch(high, low, close, window, smoothWindow, fillna).calculate()
 
         val stochD = stochK.movingAverage(smoothWindow, skipUnderWindow = false)
-        return DataColumn.create(type.name, stochD.toList())
+        return DataColumn.createValueColumn(type.name, stochD.toList())
     }
 }

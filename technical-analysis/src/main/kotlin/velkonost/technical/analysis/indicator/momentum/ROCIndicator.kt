@@ -53,6 +53,6 @@ class ROCIndicator(
                     .multiply(BigDecimal(100))
             } else BigDecimal.ZERO
         }
-        return DataColumn.create(type.name, roc.toList())
+        return DataColumn.createValueColumn(type.name, roc.toList())
     }
 }

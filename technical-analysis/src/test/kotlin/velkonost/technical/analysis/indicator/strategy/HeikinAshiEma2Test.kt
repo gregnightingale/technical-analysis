@@ -54,13 +54,13 @@ class HeikinAshiEma2Test {
         }
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val highHColumn = DataColumn.create("highH", highH)
-        val lowHColumn = DataColumn.create("lowH", lowH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
-        val fastdColumn = DataColumn.create("fastd", fastd)
-        val fastkColumn = DataColumn.create("fastk", fastk)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val highHColumn = DataColumn.createValueColumn("highH", highH)
+        val lowHColumn = DataColumn.createValueColumn("lowH", lowH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
+        val fastdColumn = DataColumn.createValueColumn("fastd", fastd)
+        val fastkColumn = DataColumn.createValueColumn("fastk", fastk)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(
@@ -128,13 +128,13 @@ class HeikinAshiEma2Test {
         }
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val highHColumn = DataColumn.create("highH", highH)
-        val lowHColumn = DataColumn.create("lowH", lowH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
-        val fastdColumn = DataColumn.create("fastd", fastd)
-        val fastkColumn = DataColumn.create("fastk", fastk)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val highHColumn = DataColumn.createValueColumn("highH", highH)
+        val lowHColumn = DataColumn.createValueColumn("lowH", lowH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
+        val fastdColumn = DataColumn.createValueColumn("fastd", fastd)
+        val fastkColumn = DataColumn.createValueColumn("fastk", fastk)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(
@@ -182,13 +182,13 @@ class HeikinAshiEma2Test {
         ema200[currentIndex] = BigDecimal("100")
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val highHColumn = DataColumn.create("highH", highH)
-        val lowHColumn = DataColumn.create("lowH", lowH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
-        val fastdColumn = DataColumn.create("fastd", fastd)
-        val fastkColumn = DataColumn.create("fastk", fastk)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val highHColumn = DataColumn.createValueColumn("highH", highH)
+        val lowHColumn = DataColumn.createValueColumn("lowH", lowH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
+        val fastdColumn = DataColumn.createValueColumn("fastd", fastd)
+        val fastkColumn = DataColumn.createValueColumn("fastk", fastk)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(
@@ -225,19 +225,19 @@ class HeikinAshiEma2Test {
         closeH[currentIndex] = BigDecimal("100")
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(
             openStreamH = openStreamHColumn,
-            highH = DataColumn.create("highH", MutableList(size) { BigDecimal.ZERO }),
-            lowH = DataColumn.create("lowH", MutableList(size) { BigDecimal.ZERO }),
+            highH = DataColumn.createValueColumn("highH", MutableList(size) { BigDecimal.ZERO }),
+            lowH = DataColumn.createValueColumn("lowH", MutableList(size) { BigDecimal.ZERO }),
             closeH = closeHColumn,
             currentPos = currentPos,
-            fastd = DataColumn.create("fastd", MutableList(size) { BigDecimal.ZERO }),
-            fastk = DataColumn.create("fastk", MutableList(size) { BigDecimal.ZERO }),
-            ema200 = DataColumn.create("ema200", MutableList(size) { BigDecimal.ZERO }),
+            fastd = DataColumn.createValueColumn("fastd", MutableList(size) { BigDecimal.ZERO }),
+            fastk = DataColumn.createValueColumn("fastk", MutableList(size) { BigDecimal.ZERO }),
+            ema200 = DataColumn.createValueColumn("ema200", MutableList(size) { BigDecimal.ZERO }),
             backStep = currentIndex
         )
 
@@ -263,19 +263,19 @@ class HeikinAshiEma2Test {
         closeH[currentIndex] = BigDecimal("105")
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(
             openStreamH = openStreamHColumn,
-            highH = DataColumn.create("highH", MutableList(size) { BigDecimal.ZERO }),
-            lowH = DataColumn.create("lowH", MutableList(size) { BigDecimal.ZERO }),
+            highH = DataColumn.createValueColumn("highH", MutableList(size) { BigDecimal.ZERO }),
+            lowH = DataColumn.createValueColumn("lowH", MutableList(size) { BigDecimal.ZERO }),
             closeH = closeHColumn,
             currentPos = currentPos,
-            fastd = DataColumn.create("fastd", MutableList(size) { BigDecimal.ZERO }),
-            fastk = DataColumn.create("fastk", MutableList(size) { BigDecimal.ZERO }),
-            ema200 = DataColumn.create("ema200", MutableList(size) { BigDecimal.ZERO }),
+            fastd = DataColumn.createValueColumn("fastd", MutableList(size) { BigDecimal.ZERO }),
+            fastk = DataColumn.createValueColumn("fastk", MutableList(size) { BigDecimal.ZERO }),
+            ema200 = DataColumn.createValueColumn("ema200", MutableList(size) { BigDecimal.ZERO }),
             backStep = currentIndex
         )
 
@@ -302,13 +302,13 @@ class HeikinAshiEma2Test {
         val ema200 = MutableList(size) { BigDecimal("100") }
 
         // Create DataColumns
-        val openStreamHColumn = DataColumn.create("openStreamH", openStreamH)
-        val highHColumn = DataColumn.create("highH", highH)
-        val lowHColumn = DataColumn.create("lowH", lowH)
-        val closeHColumn = DataColumn.create("closeH", closeH)
-        val fastdColumn = DataColumn.create("fastd", fastd)
-        val fastkColumn = DataColumn.create("fastk", fastk)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val openStreamHColumn = DataColumn.createValueColumn("openStreamH", openStreamH)
+        val highHColumn = DataColumn.createValueColumn("highH", highH)
+        val lowHColumn = DataColumn.createValueColumn("lowH", lowH)
+        val closeHColumn = DataColumn.createValueColumn("closeH", closeH)
+        val fastdColumn = DataColumn.createValueColumn("fastd", fastd)
+        val fastkColumn = DataColumn.createValueColumn("fastk", fastk)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = HeikinAshiEma2(

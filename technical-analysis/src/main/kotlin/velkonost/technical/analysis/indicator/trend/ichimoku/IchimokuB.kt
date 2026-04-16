@@ -91,6 +91,6 @@ class IchimokuB(
                 if (index < window2) meanSpanB else senkouSpanB[index - window2]
             }
         }
-        return DataColumn.Companion.create(type.name, senkouSpanB)
+        return DataColumn.Companion.createValueColumn(type.name, senkouSpanB)
     }
 }

@@ -17,7 +17,7 @@ class DonchianChannelHband(
 
     override fun calculate(): DataColumn<BigDecimal> {
         val hband = high.calculateRollingMax(window)
-        return DataColumn.create(
+        return DataColumn.createValueColumn(
             type.name,
             hband.drop(offset).plus(List(offset) { BigDecimal.ZERO }).takeIf { offset != 0 } ?: hband
         )

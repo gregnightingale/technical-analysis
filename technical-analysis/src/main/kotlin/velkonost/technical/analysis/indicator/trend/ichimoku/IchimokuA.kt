@@ -87,6 +87,6 @@ class IchimokuA(
             }
         }
 
-        return DataColumn.Companion.create(type.name, senkouSpanA)
+        return DataColumn.Companion.createValueColumn(type.name, senkouSpanA)
     }
 }

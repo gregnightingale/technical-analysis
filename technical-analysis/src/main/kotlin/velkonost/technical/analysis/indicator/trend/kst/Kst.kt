@@ -70,7 +70,7 @@ class Kst(
                 .multiply(BigDecimal(100))
         }
 
-        return DataColumn.create(type.name, kstValues)
+        return DataColumn.createValueColumn(type.name, kstValues)
     }
 
     /**
@@ -96,7 +96,7 @@ class Kst(
         }
 
         return SmaFast(close, window)
-            .calculateSMA(DataColumn.Companion.create("", rocValues.toList()), window)
+            .calculateSMA(DataColumn.Companion.createValueColumn("", rocValues.toList()), window)
             .toList()
     }
 

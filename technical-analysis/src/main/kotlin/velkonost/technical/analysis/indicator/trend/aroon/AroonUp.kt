@@ -42,6 +42,6 @@ class AroonUp(
      */
     override fun calculate(): DataColumn<BigDecimal> {
         val result = high.toList().calculateAroon(window, true)
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

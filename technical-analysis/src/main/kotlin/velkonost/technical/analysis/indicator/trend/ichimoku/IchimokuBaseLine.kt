@@ -80,6 +80,6 @@ class IchimokuBaseLine(
         val result = baseHigh.zip(baseLow) { h, l ->
             (h.add(l)).divide(BigDecimal(2), 10, RoundingMode.HALF_UP)
         }
-        return DataColumn.Companion.create(type.name, result)
+        return DataColumn.Companion.createValueColumn(type.name, result)
     }
 }

@@ -22,6 +22,6 @@ class BollingerBandsMavg(
             rollingMean[i] = mean
         }
 
-        return DataColumn.create(type.name, rollingMean.toList())
+        return DataColumn.createValueColumn(type.name, rollingMean.toList())
     }
 }

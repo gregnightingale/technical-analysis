@@ -76,6 +76,6 @@ class VolumeWeightedAveragePrice(
         }
 
         val result = if (fillna) vwap.fillNulls(BigDecimal.ZERO) else vwap
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

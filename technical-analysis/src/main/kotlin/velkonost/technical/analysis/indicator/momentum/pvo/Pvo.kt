@@ -27,6 +27,6 @@ class Pvo(
                     .multiply(BigDecimal(100))
             } else BigDecimal.ZERO
         }
-        return DataColumn.create(type.name, pvo.toList())
+        return DataColumn.createValueColumn(type.name, pvo.toList())
     }
 }

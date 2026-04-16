@@ -20,7 +20,7 @@ class KeltnerChannelMband(
 
     override fun calculate(): DataColumn<BigDecimal> {
         val result = if (originalVersion) calculateSma(calculateTypicalPrice(), window) else close.calculateEma(window)
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 
     private fun calculateTypicalPrice(): List<BigDecimal> {

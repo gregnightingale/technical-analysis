@@ -50,6 +50,6 @@ class PpoHist(
         val ppoHist = Array(size) { i ->
             ppo[i].subtract(ppoSignal[i])
         }
-        return DataColumn.create(type.name, ppoHist.toList())
+        return DataColumn.createValueColumn(type.name, ppoHist.toList())
     }
 }

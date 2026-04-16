@@ -86,6 +86,6 @@ class KeltnerChannelLbandIndicator(
             if (closeValue <= tpLow.toList()[index]) BigDecimal.ONE else BigDecimal.ZERO
         }
 
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

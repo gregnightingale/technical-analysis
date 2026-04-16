@@ -19,6 +19,6 @@ class PvoHist(
         val pvoHist = Array(volume.size()) { i ->
             pvo[i].subtract(pvoSignal[i])
         }
-        return DataColumn.create(type.name, pvoHist.toList())
+        return DataColumn.createValueColumn(type.name, pvoHist.toList())
     }
 }

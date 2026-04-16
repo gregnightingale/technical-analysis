@@ -81,7 +81,7 @@ class OnBalanceVolumeIndicator(
             previousClose = currentClose
         }
 
-        return DataColumn.create(type.name, obvValues).cumSum().convertToBigDecimal()
+        return DataColumn.createValueColumn(type.name, obvValues).cumSum().convertToBigDecimal()
 
     }
 }

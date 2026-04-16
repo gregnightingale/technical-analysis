@@ -62,6 +62,6 @@ class TrixIndicator(
             }
         }
 
-        return DataColumn.create(type.name, trixValues)
+        return DataColumn.createValueColumn(type.name, trixValues)
     }
 }

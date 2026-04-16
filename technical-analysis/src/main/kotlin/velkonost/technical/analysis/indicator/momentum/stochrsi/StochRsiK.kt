@@ -52,6 +52,6 @@ class StochRsiK(
         val stochRsi = StochRsi(close, window, smooth1, smooth2, fillna).calculate()
         val result = calculateSMA(stochRsi, smooth1)
 
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

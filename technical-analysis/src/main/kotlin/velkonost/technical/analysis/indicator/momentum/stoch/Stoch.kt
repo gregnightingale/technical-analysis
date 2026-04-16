@@ -59,6 +59,6 @@ class Stoch(
                     .multiply(BigDecimal(100))
             } else BigDecimal(50)
         }
-        return DataColumn.create(type.name, stochK.toList())
+        return DataColumn.createValueColumn(type.name, stochK.toList())
     }
 }

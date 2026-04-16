@@ -42,6 +42,6 @@ class MacdSignal(
     override fun calculate(): DataColumn<BigDecimal> {
         val macd = Macd(close, windowSlow, windowFast, windowSign, fillna).calculate()
         val result = macd.calculateEma(windowSign)
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

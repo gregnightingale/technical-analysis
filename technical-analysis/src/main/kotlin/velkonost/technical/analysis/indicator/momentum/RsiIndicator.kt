@@ -91,7 +91,7 @@ class RsiIndicator(
                 BigDecimal(100).divide(BigDecimal.ONE.add(rs), scale, RoundingMode.HALF_UP)
             )
         }
-        return DataColumn.create(type.name, rsi)
+        return DataColumn.createValueColumn(type.name, rsi)
     }
 
 }

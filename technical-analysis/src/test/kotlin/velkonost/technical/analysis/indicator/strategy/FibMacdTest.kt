@@ -82,13 +82,13 @@ class FibMacdTest {
         low[currentIndex] = close[currentIndex] - BigDecimal("2")
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -171,13 +171,13 @@ class FibMacdTest {
         low[currentIndex] = close[currentIndex] - BigDecimal("2")
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -188,7 +188,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -241,13 +240,13 @@ class FibMacdTest {
         open[currentIndex] = BigDecimal("50")
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -258,7 +257,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -286,13 +284,13 @@ class FibMacdTest {
         val ema200 = MutableList(size) { BigDecimal("95") }
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -303,7 +301,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -391,13 +388,13 @@ class FibMacdTest {
         low[currentIndex] = close[currentIndex] - BigDecimal("2")
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -408,7 +405,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -489,13 +485,13 @@ class FibMacdTest {
         open[currentIndex] = BigDecimal("190") // Bullish candle but no engulfing
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -506,7 +502,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -594,13 +589,13 @@ class FibMacdTest {
         low[currentIndex - 2] = BigDecimal("100") // Lower than any Fibonacci level
 
         // Initialize DataColumns
-        val closeColumn = DataColumn.create("close", close)
-        val openColumn = DataColumn.create("open", open)
-        val highColumn = DataColumn.create("high", high)
-        val lowColumn = DataColumn.create("low", low)
-        val macdSignalColumn = DataColumn.create("macdSignal", macdSignal)
-        val macdColumn = DataColumn.create("macd", macd)
-        val ema200Column = DataColumn.create("ema200", ema200)
+        val closeColumn = DataColumn.createValueColumn("close", close)
+        val openColumn = DataColumn.createValueColumn("open", open)
+        val highColumn = DataColumn.createValueColumn("high", high)
+        val lowColumn = DataColumn.createValueColumn("low", low)
+        val macdSignalColumn = DataColumn.createValueColumn("macdSignal", macdSignal)
+        val macdColumn = DataColumn.createValueColumn("macd", macd)
+        val ema200Column = DataColumn.createValueColumn("ema200", ema200)
 
         // Initialize the strategy
         val strategy = FibMacd(
@@ -611,7 +606,6 @@ class FibMacdTest {
             macdSignal = macdSignalColumn,
             macd = macdColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result

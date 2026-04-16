@@ -108,6 +108,6 @@ class EaseOfMovementIndicator(
         }
 
         val result = if (fillna) emv.fillNulls(BigDecimal.ZERO) else emv
-        return DataColumn.create(type.name, result)
+        return DataColumn.createValueColumn(type.name, result)
     }
 }

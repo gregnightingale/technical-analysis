@@ -24,7 +24,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -46,7 +45,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -68,7 +66,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVol", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -91,7 +88,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1,
             invert = true  // Added invert parameter
         )
 
@@ -114,7 +110,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVol", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -136,7 +131,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -158,7 +152,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -180,7 +173,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -202,7 +194,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -224,7 +215,6 @@ class BreakoutTest {
             maxClose = DataColumn.createValueColumn("maxClose", maxCloseValues),
             minClose = DataColumn.createValueColumn("minClose", minCloseValues),
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()

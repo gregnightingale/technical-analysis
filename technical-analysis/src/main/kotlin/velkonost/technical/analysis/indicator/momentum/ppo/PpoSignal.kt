@@ -42,6 +42,6 @@ class PpoSignal(
         val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).calculate()
         val ppoSignal = ppo.calculateEma(windowSign)
 
-        return DataColumn.create(type.name, ppoSignal.toList())
+        return DataColumn.createValueColumn(type.name, ppoSignal.toList())
     }
 }

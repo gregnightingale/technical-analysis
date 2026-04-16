@@ -59,7 +59,7 @@ class KstDiff(
         val kstDiff = kst.toList().zip(kstSignal.toList()) { kstValue, sigValue ->
             kstValue.subtract(sigValue)
         }
-        return DataColumn.create(type.name, kstDiff)
+        return DataColumn.createValueColumn(type.name, kstDiff)
     }
 
 }

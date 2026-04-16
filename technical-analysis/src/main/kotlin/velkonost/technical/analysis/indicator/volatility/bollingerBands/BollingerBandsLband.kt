@@ -20,6 +20,6 @@ class BollingerBandsLband(
         val result = mavg.toList().mapIndexed { index, avg ->
             avg.subtract(mstd[index].multiply(BigDecimal(windowDev)).setScale(10, RoundingMode.HALF_UP))
         }
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

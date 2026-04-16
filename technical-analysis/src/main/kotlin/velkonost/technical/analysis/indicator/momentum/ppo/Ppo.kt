@@ -26,6 +26,6 @@ class Ppo(
                     .multiply(BigDecimal(100))
             } else BigDecimal.ZERO
         }
-        return DataColumn.create(type.name, ppo.toList())
+        return DataColumn.createValueColumn(type.name, ppo.toList())
     }
 }

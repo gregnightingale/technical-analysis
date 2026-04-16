@@ -35,6 +35,6 @@ class StochRsi(
             }
         }
 
-        return DataColumn.create(type.name, stochRsi.toList())
+        return DataColumn.createValueColumn(type.name, stochRsi.toList())
     }
 }

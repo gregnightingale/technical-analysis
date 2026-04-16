@@ -17,12 +17,12 @@ class TripleEmaStochRsiAtrTest {
         fastkValues: List<BigDecimal>,
         fastdValues: List<BigDecimal>
     ): Map<String, DataColumn<BigDecimal>> {
-        val close = DataColumn.create("close", closeValues)
-        val ema8 = DataColumn.create("ema8", ema8Values)
-        val ema14 = DataColumn.create("ema14", ema14Values)
-        val ema50 = DataColumn.create("ema50", ema50Values)
-        val fastk = DataColumn.create("fastk", fastkValues)
-        val fastd = DataColumn.create("fastd", fastdValues)
+        val close = DataColumn.createValueColumn("close", closeValues)
+        val ema8 = DataColumn.createValueColumn("ema8", ema8Values)
+        val ema14 = DataColumn.createValueColumn("ema14", ema14Values)
+        val ema50 = DataColumn.createValueColumn("ema50", ema50Values)
+        val fastk = DataColumn.createValueColumn("fastk", fastkValues)
+        val fastd = DataColumn.createValueColumn("fastd", fastdValues)
 
         return mapOf(
             "close" to close,

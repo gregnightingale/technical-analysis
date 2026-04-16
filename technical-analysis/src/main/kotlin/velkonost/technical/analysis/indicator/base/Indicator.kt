@@ -4,6 +4,7 @@ import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.api.any
 import org.jetbrains.kotlinx.dataframe.api.cast
+import org.jetbrains.kotlinx.dataframe.api.convertToBigDecimal
 import org.jetbrains.kotlinx.dataframe.api.getColumn
 import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import org.jetbrains.kotlinx.dataframe.indices
@@ -35,13 +36,14 @@ abstract class Indicator(
      * this is only used by unit tests
      * TODO: move it to test side
      */
+    @Suppress("UNCHECKED_CAST")
     fun isEqual(expectedDataframe: DataFrame<*>): Boolean {
         val errorPercentage = BigDecimal(0.03)
         val valueForSkip = BigDecimal(1.0e-6)
         var skipped = 0
 
         val actualData = calculate()
-        val expectedData: DataColumn<BigDecimal> = expectedDataframe.getColumn(type.name).cast()
+        val expectedData: DataColumn<BigDecimal> = expectedDataframe.getColumn(type.title).convertToBigDecimal() as DataColumn<BigDecimal>
 
         val result = actualData.mapIndexed { index, actualValue ->
             val expectedValue = expectedData[index]

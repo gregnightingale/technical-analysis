@@ -57,7 +57,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -113,7 +112,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -166,7 +164,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -209,7 +206,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 2
         )
 
         val decision = strategy.calculateMostRecent()
@@ -232,7 +228,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = -1
         )
 
         val decision = strategy.calculateMostRecent()
@@ -285,10 +280,10 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 3
         )
 
-        val decision = strategy.calculateMostRecent()
+        print (strategy.calculate())
+        val decision = strategy.calculateAtIndex(3)
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -338,10 +333,10 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 3
         )
 
-        val decision = strategy.calculateMostRecent()
+        print(strategy.calculate())
+        val decision = strategy.calculateAtIndex(3)
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -391,7 +386,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()
@@ -444,7 +438,6 @@ class GoldenCrossTest {
             ema50 = DataColumn.createValueColumn("ema50", ema50Values),
             ema20 = DataColumn.createValueColumn("ema20", ema20Values),
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
-            backStep = 4
         )
 
         val decision = strategy.calculateMostRecent()

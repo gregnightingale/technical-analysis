@@ -78,6 +78,6 @@ class BollingerBandsLbandIndicator(
         val result = close.toList().mapIndexed { index, closeValue ->
             if (closeValue < lband[index]) BigDecimal.ONE else BigDecimal.ZERO
         }
-        return DataColumn.create(type.name, result.toList())
+        return DataColumn.createValueColumn(type.name, result.toList())
     }
 }

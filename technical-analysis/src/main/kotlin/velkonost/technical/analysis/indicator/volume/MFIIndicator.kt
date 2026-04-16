@@ -115,7 +115,7 @@ class MFIIndicator(
             mfiValues.add(mfi)
         }
 
-        return DataColumn.create(type.name, mfiValues)
+        return DataColumn.createValueColumn(type.name, mfiValues)
     }
 
 }
