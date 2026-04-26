@@ -11,11 +11,6 @@ import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 import org.jetbrains.kotlinx.dataframe.api.toDataFrame
 
-//fun DataColumn.rolling(transform: (window: Int) -> Unit): List {
-//    val size = this.size
-//    return listOf()
-//}
-
 class MaxCloseIndicator(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 30

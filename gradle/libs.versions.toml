@@ -1,6 +1,6 @@
 [versions]
+kotlin = "2.0.0"
 technical-analysis = "1.1.0"
-kotlin = "2.2.21"
 
 multik = "0.2.3"
 dataframe = "1.0.0-Beta4"
@@ -12,11 +12,12 @@ dokka = "2.0.0"
 [libraries]
 
 # gradle
-gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version= "2.3.21" }
 
 # data
 multik-core = { module = "org.jetbrains.kotlinx:multik-core", version.ref = "multik" }
 multik-default = { module = "org.jetbrains.kotlinx:multik-default", version.ref = "multik" }
+multik-kotlin= { module = "org.jetbrains.kotlinx:multik-kotlin", version.ref = "multik" }
 dataframe = { module = "org.jetbrains.kotlinx:dataframe", version.ref = "dataframe" }
 
 # tests

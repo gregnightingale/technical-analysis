@@ -10,8 +10,13 @@ import java.math.BigDecimal
 
 class MinCloseIndicator(
     private val close: DataColumn<BigDecimal>,
+    private val window: Int = 30
 ) : Indicator(IndicatorType.MinClose, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> =
-        List(size) { close.min() }.toColumn(type.name)
+    override fun calculate(): DataColumn<BigDecimal> {
+        val output = close.toList().asReversed().windowed( size = window, partialWindows = true ) {
+            it.min()
+        }.asReversed()
+        return output.toColumn(type.name)
+    }
 }
