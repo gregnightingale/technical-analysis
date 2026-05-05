@@ -14,7 +14,6 @@ class HeikinAshiEma(
     private val ema200: DataColumn<BigDecimal>,
     private var closePos: Int = 0,
     private var currentPos: Int = -99,
-    private val backStep: Int = 0
 ) : Strategy(StrategyType.HeikinAshiEma, closeH.size()) {
 
     override fun calculateAtIndex(index: Int): StrategyDecision {

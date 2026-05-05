@@ -12,7 +12,10 @@ package velkonost.technical.analysis.indicator.base
  * Each indicator has a unique title used for identification in the output data.
  */
 enum class IndicatorType(val title: String) {
-    Mine("mine"),
+    OpenHA("Heikin-Ashi Open"),
+    HighHA("Heikin-Ashi High"),
+    LowHA("Heikin-Ashi Low"),
+    CloseHA("Heikin-Ashi Close"),
     MaxClose("Max Close"),
     MinClose("Min Close"),
     MaxVolume("Max Volume"),
@@ -60,6 +63,15 @@ enum class IndicatorType(val title: String) {
     SmaSlow("trend_sma_slow"),       // Slow Simple Moving Average
     EmaFast("trend_ema_fast"),       // Fast Exponential Moving Average
     EmaSlow("trend_ema_slow"),       // Slow Exponential Moving Average
+    Ema3("trend_ema_3"),
+    Ema6("trend_ema_6"),
+    Ema8("trend_ema_8"),
+    Ema9("trend_ema_9"),
+    Ema14("trend_ema_14"),
+    Ema20("trend_ema_20"),
+    Ema50("trend_ema_50"),
+    Ema100("trend_ema_100"),
+    Ema200("trend_ema_200"),
     VortexIndPositive("trend_vortex_ind_pos"), // Vortex Indicator Positive
     VortexIndNegative("trend_vortex_ind_neg"), // Vortex Indicator Negative
     VortexIndDiff("trend_vortex_ind_diff"),    // Vortex Indicator Difference
