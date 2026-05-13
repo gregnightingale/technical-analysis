@@ -30,7 +30,7 @@ import java.math.RoundingMode
  * @property smoothWindow Period for smoothing the %K line (default: 3)
  * @property fillna Whether to fill NaN values with zeros (default: false)
  */
-class Stoch(
+class StochFastK(
     private val high: DataColumn<BigDecimal>,
     private val low: DataColumn<BigDecimal>,
     private val close: DataColumn<BigDecimal>,
@@ -48,7 +48,7 @@ class Stoch(
      *
      * @return DataColumn<BigDecimal> containing the Stochastic Oscillator values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val smin = low.calculateRollingMin(window)
         val smax = high.calculateRollingMax(window)
 

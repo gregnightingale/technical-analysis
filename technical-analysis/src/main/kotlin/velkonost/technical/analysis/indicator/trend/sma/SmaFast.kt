@@ -11,7 +11,7 @@ class SmaFast(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.SmaFast, close.size()), SmaIndicator {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = calculateSMA(close, window)
         return DataColumn.createValueColumn(type.name, result.toList())
     }

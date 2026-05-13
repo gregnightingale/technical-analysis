@@ -64,7 +64,7 @@ class OnBalanceVolumeIndicator(
      *
      * @return DataColumn<BigDecimal> containing the OBV values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val obvValues = mutableListOf<Double>()
         var previousClose: BigDecimal? = null
 

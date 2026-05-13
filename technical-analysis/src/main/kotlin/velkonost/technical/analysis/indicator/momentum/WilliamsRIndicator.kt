@@ -66,7 +66,7 @@ class WilliamsRIndicator(
      *
      * @return DataColumn<BigDecimal> containing the Williams %R values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val highestHigh = high.calculateRollingMax(lbp)
         val lowestLow = low.calculateRollingMin(lbp)
 

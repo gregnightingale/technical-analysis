@@ -15,7 +15,7 @@ class DonchianChannelLband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Dcl, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val lband = calculateRollingMin()
         return DataColumn.createValueColumn(
             type.name,

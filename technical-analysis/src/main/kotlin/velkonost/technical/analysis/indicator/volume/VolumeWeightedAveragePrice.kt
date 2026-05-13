@@ -52,7 +52,7 @@ class VolumeWeightedAveragePrice(
      *
      * @return DataColumn<BigDecimal> containing the VWAP values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val typicalPrice = high.mapIndexed { index, highValue ->
             val lowValue = low[index]
             val closeValue = close[index]

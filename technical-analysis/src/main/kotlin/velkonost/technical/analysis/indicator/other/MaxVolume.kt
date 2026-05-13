@@ -7,10 +7,13 @@ import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
-class MaxVolumeIndicator(
+class MaxVolume(
     private val volume: DataColumn<BigDecimal>,
 ) : Indicator(IndicatorType.MaxVolume, volume.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> =
+    /**
+     * TODO: shouldn't this be using a 'window'?
+     */
+    override fun invoke(): DataColumn<BigDecimal> =
         List(size) { volume.max() }.toColumn(type.name)
 }

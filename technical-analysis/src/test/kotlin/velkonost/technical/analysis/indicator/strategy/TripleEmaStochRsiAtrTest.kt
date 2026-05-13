@@ -62,7 +62,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal when buy conditions are met.")
     }
 
@@ -95,7 +95,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal when sell conditions are met.")
     }
 
@@ -122,7 +122,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Expected no signal when no conditions are met.")
     }
 
@@ -149,7 +149,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Expected no signal due to insufficient data.")
     }
 
@@ -194,7 +194,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal at the edge case for buy conditions.")
     }
 
@@ -239,7 +239,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal at the edge case for sell conditions.")
     }
 
@@ -284,7 +284,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Expected a Long signal after rapid changes leading to buy conditions.")
     }
 
@@ -329,7 +329,7 @@ class TripleEmaStochRsiAtrTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Expected a Short signal after rapid changes leading to sell conditions.")
     }
 }

@@ -50,7 +50,7 @@ import java.math.RoundingMode
  * @property window Period for the RSI calculation (default: 14)
  * @property fillna Whether to fill NaN values with zeros (default: false)
  */
-class RsiIndicator(
+class Rsi(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 14,
     private val fillna: Boolean = false,
@@ -73,7 +73,7 @@ class RsiIndicator(
      *
      * @return DataColumn<BigDecimal> containing the RSI values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val diff = close.calculateDiff().toList()
 
         val upDirection = diff.map { it.takeIf { it > BigDecimal.ZERO } ?: BigDecimal.ZERO }

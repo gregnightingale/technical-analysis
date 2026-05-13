@@ -16,8 +16,8 @@ enum class IndicatorType(val title: String) {
     HighHA("Heikin-Ashi High"),
     LowHA("Heikin-Ashi Low"),
     CloseHA("Heikin-Ashi Close"),
-    MaxClose("Max Close"),
-    MinClose("Min Close"),
+    MaxClose30("Max Close 30"),
+    MinClose30("Min Close"),
     MaxVolume("Max Volume"),
 
     // Volume indicators - measure trading activity and volume-price relationships
@@ -38,6 +38,7 @@ enum class IndicatorType(val title: String) {
     Bbl("volatility_bbl"),    // Bollinger Bands Low
     Bbw("volatility_bbw"),    // Bollinger Bands Width
     Bbp("volatility_bbp"),    // Bollinger Bands Percentage
+    BbPercent("volatility_percentB"),    // Bollinger Bands Percentage
     Bbhi("volatility_bbhi"),  // Bollinger Bands High Indicator
     Bbli("volatility_bbli"),  // Bollinger Bands Low Indicator
     Kcc("volatility_kcc"),    // Keltner Channel Center
@@ -61,8 +62,8 @@ enum class IndicatorType(val title: String) {
     MacdDiff("trend_macd_diff"),     // MACD Histogram
     SmaFast("trend_sma_fast"),       // Fast Simple Moving Average
     SmaSlow("trend_sma_slow"),       // Slow Simple Moving Average
-    EmaFast("trend_ema_fast"),       // Fast Exponential Moving Average
-    EmaSlow("trend_ema_slow"),       // Slow Exponential Moving Average
+    EmaFast12("trend_ema_fast"),       // Fast Exponential Moving Average
+    EmaSlow26("trend_ema_slow"),       // Slow Exponential Moving Average
     Ema3("trend_ema_3"),
     Ema6("trend_ema_6"),
     Ema8("trend_ema_8"),
@@ -100,6 +101,11 @@ enum class IndicatorType(val title: String) {
     Tsi("momentum_tsi"),            // True Strength Index
     Uo("momentum_uo"),              // Ultimate Oscillator
     Stoch("momentum_stoch"),        // Stochastic Oscillator
+
+    /**
+     * Stochastic Oscillator Fast %D
+     */
+    StochFastD("Fast %D"),
     StochSignal("momentum_stoch_signal"), // Stochastic Signal
     Wr("momentum_wr"),              // Williams %R
     Ao("momentum_ao"),              // Awesome Oscillator

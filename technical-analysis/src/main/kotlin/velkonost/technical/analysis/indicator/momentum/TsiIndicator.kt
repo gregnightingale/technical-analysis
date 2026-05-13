@@ -47,7 +47,7 @@ class TsiIndicator(
      *
      * @return DataColumn<BigDecimal> containing the TSI values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val diffClose = close.calculateDiff().toList().drop(1).toMutableList()
         diffClose.add(BigDecimal.ZERO)
 

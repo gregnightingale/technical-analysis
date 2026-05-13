@@ -72,8 +72,8 @@ class BollingerBandsLbandIndicator(
      *
      * @return DataColumn<BigDecimal> containing binary signals (1 or 0)
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val lband = BollingerBandsLband(close, window, windowDev, fillna).calculate().toList()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val lband = BollingerBandsLband(close, window, windowDev, fillna).invoke().toList()
 
         val result = close.toList().mapIndexed { index, closeValue ->
             if (closeValue < lband[index]) BigDecimal.ONE else BigDecimal.ZERO

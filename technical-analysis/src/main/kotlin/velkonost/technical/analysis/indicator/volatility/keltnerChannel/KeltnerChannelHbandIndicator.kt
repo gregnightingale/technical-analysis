@@ -80,8 +80,8 @@ class KeltnerChannelHbandIndicator(
      *
      * @return DataColumn<BigDecimal> containing binary signals (1 or 0)
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val tpHigh = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val tpHigh = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
         val result = close.toList().mapIndexed { index, closeValue ->
             if (closeValue >= tpHigh[index]) BigDecimal.ONE else BigDecimal.ZERO
         }

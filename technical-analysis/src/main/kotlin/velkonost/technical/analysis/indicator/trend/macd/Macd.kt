@@ -13,7 +13,7 @@ class Macd(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Macd, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val emaFast = close.calculateEma(windowFast)
         val emaSlow = close.calculateEma(windowSlow)
 

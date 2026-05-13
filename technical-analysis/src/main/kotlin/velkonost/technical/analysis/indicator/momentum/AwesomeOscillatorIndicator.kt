@@ -74,7 +74,7 @@ class AwesomeOscillatorIndicator(
      *
      * @return DataColumn<BigDecimal> containing the Awesome Oscillator values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val medianPrice = high.toList().zip(low.toList()) { h, l ->
             h.add(l).divide(BigDecimal(2), scale, RoundingMode.HALF_UP)
         }

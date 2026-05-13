@@ -40,7 +40,7 @@ class AroonDown(
      *
      * @return DataColumn<BigDecimal> containing the Aroon Down values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = low.toList().calculateAroon(window, false)
         return DataColumn.createValueColumn(type.name, result)
     }

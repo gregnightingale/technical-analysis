@@ -116,7 +116,7 @@ class DailyLogReturnIndicator(
      *
      * @return DataColumn<BigDecimal> containing the daily log return values as percentages
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeValues = close.toList()
         val dailyLogReturn = Array(size) { BigDecimal.ZERO }
 

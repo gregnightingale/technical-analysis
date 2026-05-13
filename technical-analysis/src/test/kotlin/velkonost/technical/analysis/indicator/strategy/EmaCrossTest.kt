@@ -30,7 +30,7 @@ class EmaCrossTest {
             )
         )
 
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Long, result)
     }
 
@@ -45,7 +45,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.2.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Short, result)
     }
 
@@ -59,7 +59,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -67,7 +67,7 @@ class EmaCrossTest {
     fun `test insufficient data`() {
         val emaShort = DataColumn.createValueColumn("emaShort", listOf(1.0.toBigDecimal(), 1.1.toBigDecimal(), 1.2.toBigDecimal()))
         val emaLong = DataColumn.createValueColumn("emaLong", listOf(1.0.toBigDecimal(), 1.0.toBigDecimal(), 1.0.toBigDecimal()))
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -75,7 +75,7 @@ class EmaCrossTest {
     fun `test long signal at index 4`() {
         val emaShort = DataColumn.createValueColumn("emaShort", listOf(1.0, 1.0, 1.0, 1.0, 1.1).map { it.toBigDecimal() })
         val emaLong = DataColumn.createValueColumn("emaLong", listOf(1.2, 1.2, 1.2, 1.2, 1.0).map { it.toBigDecimal() })
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Long, result)
     }
 
@@ -83,7 +83,7 @@ class EmaCrossTest {
     fun `test short signal at index 4`() {
         val emaShort = DataColumn.createValueColumn("emaShort", listOf(1.2, 1.2, 1.2, 1.2, 1.1).map { it.toBigDecimal() })
         val emaLong = DataColumn.createValueColumn("emaLong", listOf(1.0, 1.0, 1.0, 1.0, 1.2).map { it.toBigDecimal() })
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Short, result)
     }
 
@@ -97,7 +97,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -111,7 +111,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.1.toBigDecimal(), 1.1.toBigDecimal(), 1.1.toBigDecimal(), 1.1.toBigDecimal(), 1.1.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -129,7 +129,7 @@ class EmaCrossTest {
                 1.5.toBigDecimal(), 1.4.toBigDecimal(), 1.3.toBigDecimal(), 1.2.toBigDecimal(), 1.1.toBigDecimal()
             )
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Long, result)
     }
 
@@ -147,7 +147,7 @@ class EmaCrossTest {
                 1.0.toBigDecimal(), 1.1.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.3.toBigDecimal()
             )
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Short, result)
     }
 
@@ -161,7 +161,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.0.toBigDecimal(), 1.1.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.3.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -175,7 +175,7 @@ class EmaCrossTest {
             "emaLong",
             listOf(1.1.toBigDecimal(), 1.2.toBigDecimal(), 1.2.toBigDecimal(), 1.3.toBigDecimal(), 1.3.toBigDecimal())
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 
@@ -209,7 +209,7 @@ class EmaCrossTest {
                 1.1.toBigDecimal()
             )
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Long, result)
     }
 
@@ -221,7 +221,7 @@ class EmaCrossTest {
         val emaLong = DataColumn.createValueColumn(
             "emaLong",
             listOf(1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2.0).map { it.toBigDecimal() })
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Short, result)
     }
 
@@ -245,7 +245,7 @@ class EmaCrossTest {
                 1.3.toBigDecimal()
             )
         )
-        val result = EmaCross(emaShort, emaLong).calculateMostRecent()
+        val result = EmaCross(emaShort, emaLong).mostRecent()
         assertEquals(StrategyDecision.Nothing, result)
     }
 }

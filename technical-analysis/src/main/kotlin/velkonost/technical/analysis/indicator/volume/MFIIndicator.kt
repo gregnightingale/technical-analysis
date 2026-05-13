@@ -51,7 +51,7 @@ class MFIIndicator(
      *
      * @return DataColumn<BigDecimal> containing the MFI values.
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val size = volume.size()
         val typicalPrice = Array(size) { index ->
             (high[index].add(low[index]).add(close[index]))

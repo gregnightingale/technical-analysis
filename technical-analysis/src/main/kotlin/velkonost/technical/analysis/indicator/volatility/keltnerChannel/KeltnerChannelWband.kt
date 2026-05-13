@@ -19,10 +19,10 @@ class KeltnerChannelWband(
 ) : Indicator(IndicatorType.Kcw, close.size()), KeltnerChannel {
 
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val tp = KeltnerChannelMband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
-        val tpHigh = KeltnerChannelLband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
-        val tpLow = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val tp = KeltnerChannelMband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
+        val tpHigh = KeltnerChannelLband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
+        val tpLow = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
 
         val result = tpHigh.mapIndexed { index, high ->
             val low = tpLow[index]

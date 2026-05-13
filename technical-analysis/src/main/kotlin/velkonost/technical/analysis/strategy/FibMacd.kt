@@ -6,6 +6,7 @@ import velkonost.technical.analysis.strategy.base.Strategy
 import velkonost.technical.analysis.strategy.base.StrategyDecision
 import velkonost.technical.analysis.strategy.base.StrategyType
 import java.math.BigDecimal
+import kotlin.math.min
 
 class FibMacd(
     private val close: DataColumn<BigDecimal>,
@@ -20,12 +21,12 @@ class FibMacd(
     var stopLossValue = BigDecimal.ZERO
     var takeProfitValue = BigDecimal.ZERO
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
-        
+    override fun atIndex(index: Int): StrategyDecision {
         var result = StrategyDecision.Nothing
+        if (index <= 6) return StrategyDecision.Nothing
 
         // Record peaks and troughs in the last 'period' timesteps
-        val period = 100
+        val period = min(size, 100)
 
         // Store peak values and their indices
         val closePeaks = mutableListOf<BigDecimal>()
@@ -118,6 +119,7 @@ class FibMacd(
 
             // Check for trade signals at each Fibonacci level
             for (level in 1 until fibLevels.size) {
+                println("level: $level, index: $index")
                 val condition1 = fibLevels[level - 1] > low[index - 2] && low[index - 2] > fibLevels[level]
                 val condition2 = close[index - 3] > fibLevels[level]
                 val condition3 = close[index - 4] > fibLevels[level]

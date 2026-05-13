@@ -95,7 +95,7 @@ class HeikinAshiEmaTest {
             backStep = size - 1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT signal when sell conditions are met.")
     }
 
@@ -169,7 +169,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, result, "Expected a LONG signal when buy conditions are met.")
     }
 
@@ -203,7 +203,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, result, "Expected NO signal when conditions are not met.")
     }
 
@@ -236,7 +236,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, result, "Expected NO signal due to insufficient data.")
     }
 
@@ -305,7 +305,7 @@ class HeikinAshiEmaTest {
             backStep = size - 1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, result, "Expected a LONG signal when buy conditions are met.")
     }
 
@@ -374,7 +374,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT signal at the edge case for sell conditions.")
     }
 
@@ -443,7 +443,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, result, "Expected a LONG signal after rapid changes leading to buy conditions.")
     }
 
@@ -512,7 +512,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT signal after rapid changes leading to sell conditions.")
     }
 
@@ -548,7 +548,7 @@ class HeikinAshiEmaTest {
             backStep = size -1
         )
 
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, result, "Expected NOTHING when closing a SHORT position.")
     }
 

@@ -78,7 +78,7 @@ class IchimokuB(
      *
      * @return DataColumn<BigDecimal> containing the Leading Span B values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val spanBHigh = high.calculateRollingMax(window3)
         val spanBLow = low.calculateRollingMin(window3)
 

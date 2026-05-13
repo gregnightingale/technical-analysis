@@ -43,8 +43,8 @@ class StochRsiD(
      *
      * @return DataColumn<BigDecimal> containing the Stochastic RSI %D values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val stochRsiK = StochRsiK(close, window, smooth1, smooth2, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val stochRsiK = StochRsiK(close, window, smooth1, smooth2, fillna).invoke()
         val result = calculateSMA(stochRsiK, smooth2)
         return DataColumn.createValueColumn(type.name, result.toList())
     }

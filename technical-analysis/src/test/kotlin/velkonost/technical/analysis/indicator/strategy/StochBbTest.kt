@@ -51,7 +51,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long)")
     }
 
@@ -81,7 +81,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Ожидается сигнал на продажу (Short)")
     }
 
@@ -101,7 +101,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала (Nothing)")
     }
 
@@ -121,7 +121,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при недостатке данных")
     }
 
@@ -151,7 +151,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку на граничных значениях")
     }
 
@@ -181,7 +181,7 @@ class StochBbTest {
             percentB = data["percentB"]!!,
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         // Ожидается сигнал на покупку из-за резкого изменения
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку после резкого изменения")
     }

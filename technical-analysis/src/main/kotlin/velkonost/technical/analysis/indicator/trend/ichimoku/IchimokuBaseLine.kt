@@ -73,7 +73,7 @@ class IchimokuBaseLine(
      *
      * @return DataColumn<BigDecimal> containing the Base Line values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val baseHigh = high.calculateRollingMax(window2)
         val baseLow = low.calculateRollingMin(window2)
 

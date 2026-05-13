@@ -13,9 +13,9 @@ class PvoHist(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.PvoHist, volume.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).calculate()
-        val pvoSignal = PvoSignal(volume, windowSlow, windowFast, windowSign, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).invoke()
+        val pvoSignal = PvoSignal(volume, windowSlow, windowFast, windowSign, fillna).invoke()
         val pvoHist = Array(volume.size()) { i ->
             pvo[i].subtract(pvoSignal[i])
         }

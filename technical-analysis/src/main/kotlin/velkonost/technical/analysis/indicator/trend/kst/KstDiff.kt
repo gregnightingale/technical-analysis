@@ -52,8 +52,8 @@ class KstDiff(
      *
      * @return DataColumn<BigDecimal> containing the KST Difference values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).invoke()
         val kstSignal = SmaFast(close).calculateSMA(kst, nsig)
 
         val kstDiff = kst.toList().zip(kstSignal.toList()) { kstValue, sigValue ->

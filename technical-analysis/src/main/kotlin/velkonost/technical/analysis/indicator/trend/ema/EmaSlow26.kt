@@ -5,12 +5,12 @@ import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
 
-class EmaSlow(
+class EmaSlow26(
     private val close: DataColumn<BigDecimal>,
     private val window: Int = 26,
-) : Indicator(IndicatorType.EmaSlow, close.size()) {
+) : Indicator(IndicatorType.EmaSlow26, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = close.calculateEma(window)
         return DataColumn.createValueColumn(type.name, result.toList())
     }

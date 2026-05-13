@@ -14,7 +14,7 @@ class Pvo(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Pvo, volume.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         // Вычисление быстрых и медленных EMA для объема
         val emaFast = volume.calculateEma(windowFast)
         val emaSlow = volume.calculateEma(windowSlow)

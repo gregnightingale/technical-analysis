@@ -41,9 +41,9 @@ class AroonIndicator(
      *
      * @return DataColumn<BigDecimal> containing the Aroon Indicator values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val aroonUp = AroonUp(high, low, window, fillna).calculate().toList()
-        val aroonDown = AroonDown(high, low, window, fillna).calculate().toList()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val aroonUp = AroonUp(high, low, window, fillna).invoke().toList()
+        val aroonDown = AroonDown(high, low, window, fillna).invoke().toList()
         val result = aroonUp.zip(aroonDown) { up, down ->
             up.subtract(down)
         }

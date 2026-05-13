@@ -18,7 +18,7 @@ class KeltnerChannelHband(
 ) : Indicator(IndicatorType.Kch, close.size()), KeltnerChannel {
 
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = if (originalVersion) {
             val data = high.toList().zip(low.toList()).zip(close.toList()) { (h, l), c ->
                 (BigDecimal(4).multiply(h).subtract(BigDecimal(2).multiply(l)).add(c))
@@ -26,7 +26,7 @@ class KeltnerChannelHband(
             }
             calculateSma(data, window)
         } else {
-            val tp = KeltnerChannelMband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
+            val tp = KeltnerChannelMband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
             val atr = calculateAverageTrueRange(high, low, close, windowAtr)
             tp.toList().mapIndexed { index, value ->
                 value.add(atr[index].multiply(multiplier.toBigDecimal()))

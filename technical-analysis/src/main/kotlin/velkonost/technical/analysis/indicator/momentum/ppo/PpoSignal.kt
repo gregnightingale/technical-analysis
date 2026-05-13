@@ -38,8 +38,8 @@ class PpoSignal(
      *
      * @return DataColumn<BigDecimal> containing the PPO Signal Line values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).invoke()
         val ppoSignal = ppo.calculateEma(windowSign)
 
         return DataColumn.createValueColumn(type.name, ppoSignal.toList())

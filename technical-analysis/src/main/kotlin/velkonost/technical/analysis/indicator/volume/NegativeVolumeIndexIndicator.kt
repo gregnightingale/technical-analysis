@@ -76,7 +76,7 @@ class NegativeVolumeIndexIndicator(
      *
      * @return DataColumn<BigDecimal> containing the NVI values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val nviValues = Array<BigDecimal>(close.size()) { BigDecimal.ZERO }
         nviValues[0] = BigDecimal(1000)
 

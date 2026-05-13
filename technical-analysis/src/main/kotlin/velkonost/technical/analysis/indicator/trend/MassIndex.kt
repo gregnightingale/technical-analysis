@@ -50,7 +50,7 @@ class MassIndex(
      *
      * @return DataColumn<BigDecimal> containing the Mass Index values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val amplitude = high.mapIndexed { index, highValue ->
             highValue.subtract(low[index])
         }

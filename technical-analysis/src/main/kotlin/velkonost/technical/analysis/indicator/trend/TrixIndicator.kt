@@ -43,7 +43,7 @@ class TrixIndicator(
      *
      * @return DataColumn<BigDecimal> containing the TRIX values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val ema1 = close.calculateEma(window)
         val ema2 = ema1.calculateEma(window)
         val ema3 = ema2.calculateEma(window)

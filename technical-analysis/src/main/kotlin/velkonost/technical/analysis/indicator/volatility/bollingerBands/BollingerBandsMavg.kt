@@ -11,7 +11,7 @@ class BollingerBandsMavg(
     private val window: Int = 20,
 ) : Indicator(IndicatorType.Bbm, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeList = close.toList()
 
         val rollingMean = Array<BigDecimal>(size) { BigDecimal.ZERO }

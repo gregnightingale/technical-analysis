@@ -30,7 +30,7 @@ abstract class Indicator(
      * Abstract method that must be implemented by all indicators to perform their specific calculations.
      * @return DataColumn<BigDecimal> containing the calculated indicator values
      */
-    abstract fun calculate(): DataColumn<BigDecimal>
+    abstract operator fun invoke(): DataColumn<BigDecimal>
 
     /**
      * this is only used by unit tests
@@ -42,7 +42,7 @@ abstract class Indicator(
         val valueForSkip = BigDecimal(1.0e-6)
         var skipped = 0
 
-        val actualData = calculate()
+        val actualData = invoke()
         val expectedData: DataColumn<BigDecimal> = expectedDataframe.getColumn(type.title).convertToBigDecimal() as DataColumn<BigDecimal>
 
         val result = actualData.mapIndexed { index, actualValue ->

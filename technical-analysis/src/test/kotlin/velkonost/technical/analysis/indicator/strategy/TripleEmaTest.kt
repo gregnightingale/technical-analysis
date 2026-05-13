@@ -53,7 +53,7 @@ class TripleEmaTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long)")
     }
 
@@ -85,7 +85,7 @@ class TripleEmaTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Ожидается сигнал на продажу (Short)")
     }
 
@@ -106,7 +106,7 @@ class TripleEmaTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала (Nothing)")
     }
 
@@ -127,7 +127,7 @@ class TripleEmaTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при недостатке данных")
     }
 
@@ -159,7 +159,7 @@ class TripleEmaTest {
             backStep = size - 1
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку в граничном случае")
     }
 }

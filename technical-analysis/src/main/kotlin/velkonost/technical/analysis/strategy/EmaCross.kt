@@ -11,7 +11,7 @@ class EmaCross(
     private val emaLong: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.EmaCross, emaShort.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
         if (index !in 4..<size) {
             return StrategyDecision.Nothing
         }

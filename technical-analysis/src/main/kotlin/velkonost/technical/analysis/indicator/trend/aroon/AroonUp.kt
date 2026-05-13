@@ -40,7 +40,7 @@ class AroonUp(
      *
      * @return DataColumn<BigDecimal> containing the Aroon Up values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = high.toList().calculateAroon(window, true)
         return DataColumn.createValueColumn(type.name, result)
     }

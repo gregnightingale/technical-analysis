@@ -3,7 +3,6 @@ package velkonost.technical.analysis.indicator.volume
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.api.convertToBigDecimal
 import org.jetbrains.kotlinx.dataframe.api.cumSum
-import org.jetbrains.kotlinx.dataframe.api.mapIndexed
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorType
 import java.math.BigDecimal
@@ -47,8 +46,8 @@ class AccDistIndexIndicator(
      *
      * @return DataColumn<BigDecimal> containing the ADI values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val clv = close.mapIndexed { index, closeValue ->
+    override fun invoke(): DataColumn<BigDecimal> {
+        val clv = close.toList().mapIndexed { index, closeValue ->
             val highValue = high[index]
             val lowValue = low[index]
             val denominator = highValue.subtract(lowValue)
@@ -62,9 +61,11 @@ class AccDistIndexIndicator(
             }
         }
 
-        val adiValues = clv.mapIndexed { index, clvValue ->
-            clvValue.multiply(volume[index]).toDouble()
-        }
+        val adiValues = DataColumn.createValueColumn(
+            type.name,
+            clv.mapIndexed { index, clvValue ->
+                clvValue.multiply(volume[index]).toDouble()
+            })
         return adiValues.cumSum(fillna).convertToBigDecimal()
     }
 }

@@ -34,11 +34,11 @@ abstract class Strategy(
     val size: Int,
     protected val scale: Int = 10
 ) {
-    fun calculateMostRecent(): StrategyDecision =
-        calculateAtIndex(size - 1)
+    operator fun invoke(): DataColumn<StrategyDecision> =
+        MutableList(size) { atIndex(it) }.toColumn(type.name)
 
-    fun calculate(): DataColumn<StrategyDecision> =
-        MutableList(size) { calculateAtIndex(it) }.toColumn(type.name)
+    abstract fun atIndex(index: Int): StrategyDecision
 
-    abstract fun calculateAtIndex(index: Int): StrategyDecision
+    fun mostRecent(): StrategyDecision =
+        atIndex(size - 1)
 }

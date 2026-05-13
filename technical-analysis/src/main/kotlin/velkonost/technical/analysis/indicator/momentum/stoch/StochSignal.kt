@@ -44,8 +44,8 @@ class StochSignal(
      *
      * @return DataColumn<BigDecimal> containing the Stochastic Signal values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val stochK = Stoch(high, low, close, window, smoothWindow, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val stochK = StochFastK(high, low, close, window, smoothWindow, fillna).invoke()
 
         val stochD = stochK.movingAverage(smoothWindow, skipUnderWindow = false)
         return DataColumn.createValueColumn(type.name, stochD.toList())

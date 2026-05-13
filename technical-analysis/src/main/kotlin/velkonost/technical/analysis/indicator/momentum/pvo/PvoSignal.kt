@@ -13,8 +13,8 @@ class PvoSignal(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.PvoSignal, volume.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val pvo = Pvo(volume, windowSlow, windowFast, windowSign, fillna).invoke()
         val pvoSignal = pvo.calculateEma(windowSign)
 
         return DataColumn.createValueColumn(type.name, pvoSignal.toList())

@@ -73,9 +73,9 @@ class IchimokuA(
      *
      * @return DataColumn<BigDecimal> containing the Leading Span A values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val conversionLine = IchimokuConversionLine(high, low, window1, window2, window3, visual, fillna).calculate()
-        val baseLine = IchimokuBaseLine(high, low, window1, window2, window3, visual, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val conversionLine = IchimokuConversionLine(high, low, window1, window2, window3, visual, fillna).invoke()
+        val baseLine = IchimokuBaseLine(high, low, window1, window2, window3, visual, fillna).invoke()
 
         var senkouSpanA = conversionLine.toList().zip(baseLine.toList()) { conv, base ->
             (conv.add(base)).divide(BigDecimal(2), 10, RoundingMode.HALF_UP)

@@ -11,7 +11,7 @@ class EmaCrossover(
     private val emaLong: DataColumn<BigDecimal>,
 ) : Strategy(StrategyType.EmaCrossover, emaShort.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         if (index < 1 ||
             index >= emaShort.size() ||

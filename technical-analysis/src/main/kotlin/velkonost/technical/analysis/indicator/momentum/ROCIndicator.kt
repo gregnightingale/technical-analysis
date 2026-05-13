@@ -41,7 +41,7 @@ class ROCIndicator(
      *
      * @return DataColumn<BigDecimal> containing the ROC values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeShift = close.mapIndexed { index, value ->
             if (index < window) BigDecimal.ZERO ?: value else close[index - window]
         }

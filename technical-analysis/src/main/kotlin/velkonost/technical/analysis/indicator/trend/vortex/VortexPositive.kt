@@ -51,7 +51,7 @@ class VortexPositive(
      *
      * @return DataColumn<BigDecimal> containing the VIP values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val trueRangeSum = calculateTrueRangeSum(close, window) {
             calculateTrueRange(high, low, close, it)
         }

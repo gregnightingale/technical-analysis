@@ -13,10 +13,10 @@ class BollingerBandsWband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Bbw, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val hband = BollingerBandsHband(close, window, windowDev, fillna).calculate().toList()
-        val lband = BollingerBandsLband(close, window, windowDev, fillna).calculate().toList()
-        val mavg = BollingerBandsMavg(close, window).calculate().toList()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val hband = BollingerBandsHband(close, window, windowDev, fillna).invoke().toList()
+        val lband = BollingerBandsLband(close, window, windowDev, fillna).invoke().toList()
+        val mavg = BollingerBandsMavg(close, window).invoke().toList()
 
         val result = mutableListOf<BigDecimal>()
         for (index in hband.indices) {

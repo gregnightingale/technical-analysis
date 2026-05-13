@@ -76,7 +76,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that a LONG signal is generated
         assertEquals(StrategyDecision.Long, result, "Expected a LONG trade direction.")
@@ -150,7 +150,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that a SHORT signal is generated
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT trade direction.")
@@ -204,7 +204,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that no trade signal is generated
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade direction.")
@@ -242,7 +242,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that position should be closed
         assertEquals(StrategyDecision.Nothing, result, "Expected no new trade direction.")
@@ -280,7 +280,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that position should be closed
         assertEquals(StrategyDecision.Nothing, result, "Expected no new trade direction.")
@@ -324,7 +324,7 @@ class HeikinAshiEma2Test {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert that no trade signal is generated due to insufficient data
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade direction due to insufficient data.")

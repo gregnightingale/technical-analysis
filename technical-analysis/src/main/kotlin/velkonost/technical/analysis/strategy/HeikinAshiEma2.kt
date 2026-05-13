@@ -14,11 +14,10 @@ class HeikinAshiEma2(
     private val currentPos: Int = -99,
     private val fastd: DataColumn<BigDecimal>,
     private val fastk: DataColumn<BigDecimal>,
-    private val ema200: DataColumn<BigDecimal>,
-    private val backStep: Int = 0
+    private val ema200: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.HeikinAshiEma2, closeH.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         var tradeDirection = StrategyDecision.Nothing
         var closePos = 0

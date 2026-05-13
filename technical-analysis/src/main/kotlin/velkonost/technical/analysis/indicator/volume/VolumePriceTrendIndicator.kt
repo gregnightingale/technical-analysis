@@ -49,7 +49,7 @@ class VolumePriceTrendIndicator(
      *
      * @return DataColumn<BigDecimal> containing the VPT values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val size = close.size()
         if (size < 2) {
             return DataColumn.createValueColumn(type.name, listOf(BigDecimal.ZERO))

@@ -11,7 +11,7 @@ package velkonost.technical.analysis.strategy.base
  * - EmaCrossover: Advanced EMA crossover strategy with additional confirmation signals
  * - CandleWick: Analyzes candlestick wicks for potential reversal signals
  * - GoldenCross: Uses the intersection of fast and slow moving averages
- * - StochRsiMacd: Combines Stochastic RSI and MACD for momentum and trend confirmation
+ * - StochRsiMacd:
  * - RsiStochEma: Integrates RSI, Stochastic, and EMA for comprehensive market analysis
  * - StochasticBb: Uses Stochastic oscillator with Bollinger Bands for volatility-based signals
  * - TripleEma: Implements a triple EMA crossover system for trend following
@@ -29,6 +29,10 @@ enum class StrategyType(val title: String) {
     EmaCrossover("EMA Crossover"),
     CandleWick("Candle Wick"),
     GoldenCross("Golden Cross"),
+
+    /**
+     * Combines Stochastic RSI and MACD for momentum and trend confirmation
+     */
     StochRsiMacd("Stoch RSI MACD"),
     RsiStochEma("RSI Stoch EMA"),
     StochasticBb("Stoch BB"),

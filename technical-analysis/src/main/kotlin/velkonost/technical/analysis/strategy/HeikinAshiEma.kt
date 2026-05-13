@@ -16,7 +16,7 @@ class HeikinAshiEma(
     private var currentPos: Int = -99,
 ) : Strategy(StrategyType.HeikinAshiEma, closeH.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         var updatedTradeDirection = StrategyDecision.Nothing
         var updatedClosePos = closePos

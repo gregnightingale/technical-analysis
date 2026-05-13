@@ -13,9 +13,9 @@ class VortexDiff(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.VortexIndDiff, close.size()), VortexIndicator {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val vip = VortexPositive(high, low, close, window, fillna).calculate()
-        val vin = VortexNegative(high, low, close, window, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val vip = VortexPositive(high, low, close, window, fillna).invoke()
+        val vin = VortexNegative(high, low, close, window, fillna).invoke()
 
         val diff = vip.toList().zip(vin.toList()) { vipValue, vinValue -> vipValue.subtract(vinValue) }
         return DataColumn.createValueColumn(type.name, diff)

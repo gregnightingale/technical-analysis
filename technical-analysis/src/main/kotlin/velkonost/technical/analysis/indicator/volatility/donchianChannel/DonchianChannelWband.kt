@@ -15,9 +15,9 @@ class DonchianChannelWband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Dcw, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val lband = DonchianChannelLband(high, low, close, window, offset, fillna).calculate()
-        val hband = DonchianChannelHband(high, low, close, window, offset, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val lband = DonchianChannelLband(high, low, close, window, offset, fillna).invoke()
+        val hband = DonchianChannelHband(high, low, close, window, offset, fillna).invoke()
         val mavg = calculateRollingMean()
 
         val wband = hband.toList().zip(lband.toList()).zip(mavg) { (high, low), avg ->

@@ -13,9 +13,9 @@ class MacdDiff(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.MacdDiff, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val macd = Macd(close, windowSlow, windowFast, windowSign, fillna).calculate()
-        val macdSignal = MacdSignal(close, windowSlow, windowFast, windowSign, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val macd = Macd(close, windowSlow, windowFast, windowSign, fillna).invoke()
+        val macdSignal = MacdSignal(close, windowSlow, windowFast, windowSign, fillna).invoke()
         val result = macd.toList().zip(macdSignal.toList()) { macdVal, signalVal ->
             macdVal.subtract(signalVal)
         }

@@ -77,7 +77,7 @@ class EaseOfMovementIndicator(
      *
      * @return DataColumn<BigDecimal> containing the EMV values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val emv: List<BigDecimal>
 
         val highDiff = high.indices.map { index ->

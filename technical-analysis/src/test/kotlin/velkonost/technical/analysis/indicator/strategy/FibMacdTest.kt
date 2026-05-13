@@ -102,7 +102,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Long, result, "Expected a LONG trade direction.")
@@ -191,7 +191,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Short, result, "Expected a SHORT trade direction.")
@@ -260,7 +260,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal.")
@@ -304,7 +304,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to insufficient data.")
@@ -408,7 +408,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to lack of MACD crossover.")
@@ -505,7 +505,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(StrategyDecision.Nothing, result, "Expected no trade signal due to lack of engulfing pattern.")
@@ -609,7 +609,7 @@ class FibMacdTest {
         )
 
         // Calculate the result
-        val result = strategy.calculateMostRecent()
+        val result = strategy.mostRecent()
 
         // Assert the expected outcome
         assertEquals(

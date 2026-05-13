@@ -70,7 +70,7 @@ class ChaikinMoneyFlowIndicator(
      *
      * @return DataColumn<BigDecimal> containing the CMF values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val moneyFlowMultiplier = calculateMoneyFlowMultiplier()
         val moneyFlowVolume = calculateMoneyFlowVolume(moneyFlowMultiplier)
 

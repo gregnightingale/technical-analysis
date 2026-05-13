@@ -57,7 +57,7 @@ class Kst(
      *
      * @return DataColumn<BigDecimal> containing the KST values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val rocma1 = calculateSmoothedROC(roc1, window1)
         val rocma2 = calculateSmoothedROC(roc2, window2)
         val rocma3 = calculateSmoothedROC(roc3, window3)

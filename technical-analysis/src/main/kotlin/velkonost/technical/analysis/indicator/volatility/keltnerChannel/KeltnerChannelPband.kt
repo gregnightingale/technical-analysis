@@ -20,9 +20,9 @@ class KeltnerChannelPband(
     override val skipTestResults: Boolean
         get() = true
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val tpHigh = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
-        val tpLow = KeltnerChannelLband(high, low, close, window, windowAtr, fillna, originalVersion).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val tpHigh = KeltnerChannelHband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
+        val tpLow = KeltnerChannelLband(high, low, close, window, windowAtr, fillna, originalVersion).invoke()
 
         val result = mutableListOf<BigDecimal>()
         val size = close.size()

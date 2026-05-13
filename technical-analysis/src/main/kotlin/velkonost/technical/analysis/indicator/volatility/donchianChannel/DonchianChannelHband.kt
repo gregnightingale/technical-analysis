@@ -15,7 +15,7 @@ class DonchianChannelHband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Dch, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val hband = high.calculateRollingMax(window)
         return DataColumn.createValueColumn(
             type.name,

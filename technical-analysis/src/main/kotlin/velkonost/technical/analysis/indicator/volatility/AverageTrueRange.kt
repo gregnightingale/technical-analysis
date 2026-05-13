@@ -46,7 +46,7 @@ class AverageTrueRange(
      *
      * @return DataColumn<BigDecimal> containing the ATR values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val trueRange = calculateTrueRange(high, low, close)
 
         val atrValues = Array<BigDecimal>(size) { BigDecimal.ZERO }

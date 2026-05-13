@@ -26,7 +26,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -47,7 +47,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -68,7 +68,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVol", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -91,7 +91,7 @@ class BreakoutTest {
             invert = true  // Added invert parameter
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -112,7 +112,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVol", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -133,7 +133,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -154,7 +154,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -175,7 +175,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -196,7 +196,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -217,7 +217,7 @@ class BreakoutTest {
             maxVolume = DataColumn.createValueColumn("maxVolume", maxVolValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 }

@@ -14,7 +14,7 @@ class GoldenCross(
     private val rsi: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.GoldenCross, close.size()) {
     
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         if (index < 3 ||
             index >= close.size() ||

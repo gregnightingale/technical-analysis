@@ -16,7 +16,7 @@ import velkonost.technical.analysis.indicator.momentum.ppo.PpoSignal
 import velkonost.technical.analysis.indicator.momentum.pvo.Pvo
 import velkonost.technical.analysis.indicator.momentum.pvo.PvoHist
 import velkonost.technical.analysis.indicator.momentum.pvo.PvoSignal
-import velkonost.technical.analysis.indicator.momentum.stoch.Stoch
+import velkonost.technical.analysis.indicator.momentum.stoch.StochFastK
 import velkonost.technical.analysis.indicator.momentum.stoch.StochSignal
 import velkonost.technical.analysis.indicator.momentum.stochrsi.StochRsi
 import velkonost.technical.analysis.indicator.momentum.stochrsi.StochRsiD
@@ -31,8 +31,8 @@ import velkonost.technical.analysis.indicator.trend.TrixIndicator
 import velkonost.technical.analysis.indicator.trend.aroon.AroonDown
 import velkonost.technical.analysis.indicator.trend.aroon.AroonIndicator
 import velkonost.technical.analysis.indicator.trend.aroon.AroonUp
-import velkonost.technical.analysis.indicator.trend.ema.EmaFast
-import velkonost.technical.analysis.indicator.trend.ema.EmaSlow
+import velkonost.technical.analysis.indicator.trend.ema.EmaFast12
+import velkonost.technical.analysis.indicator.trend.ema.EmaSlow26
 import velkonost.technical.analysis.indicator.trend.ichimoku.IchimokuA
 import velkonost.technical.analysis.indicator.trend.ichimoku.IchimokuB
 import velkonost.technical.analysis.indicator.trend.ichimoku.IchimokuBaseLine
@@ -239,8 +239,8 @@ object ExampleRunner {
         SmaFast(closeColumn).also { add(it) }
         SmaSlow(closeColumn).also { add(it) }
 
-        EmaFast(closeColumn).also { add(it) }
-        EmaSlow(closeColumn).also { add(it) }
+        EmaFast12(closeColumn).also { add(it) }
+        EmaSlow26(closeColumn).also { add(it) }
 
         VortexPositive(highColumn, lowColumn, closeColumn).also { add(it) }
         VortexNegative(highColumn, lowColumn, closeColumn).also { add(it) }
@@ -280,13 +280,13 @@ object ExampleRunner {
         lowColumn: DataColumn<BigDecimal>,
         volumeColumn: DataColumn<BigDecimal>
     ) {
-        RsiIndicator(closeColumn).also { add(it) }
+        Rsi(closeColumn).also { add(it) }
         StochRsi(closeColumn).also { add(it) }
         StochRsiK(closeColumn).also { add(it) }
         StochRsiD(closeColumn).also { add(it) }
         TsiIndicator(closeColumn).also { add(it) }
         UltimateOscillator(highColumn, lowColumn, closeColumn).also { add(it) }
-        Stoch(highColumn, lowColumn, closeColumn).also { add(it) }
+        StochFastK(highColumn, lowColumn, closeColumn).also { add(it) }
         StochSignal(highColumn, lowColumn, closeColumn).also { add(it) }
         WilliamsRIndicator(highColumn, lowColumn, closeColumn).also { add(it) }
         AwesomeOscillatorIndicator(highColumn, lowColumn).also { add(it) }

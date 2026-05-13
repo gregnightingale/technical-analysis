@@ -47,7 +47,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -90,7 +90,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -133,7 +133,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -168,7 +168,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -187,7 +187,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -230,7 +230,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -273,7 +273,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -316,7 +316,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -359,7 +359,7 @@ class CandleWickTest {
             low = DataColumn.createValueColumn("low", lowValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -403,7 +403,7 @@ class CandleWickTest {
         )
 
         // Assuming the strategy should return Nothing for invalid data
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 }

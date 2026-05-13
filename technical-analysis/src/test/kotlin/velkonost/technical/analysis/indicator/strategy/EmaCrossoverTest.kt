@@ -19,7 +19,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -34,7 +34,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -49,7 +49,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues)
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -63,7 +63,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaValues)
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -78,7 +78,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues)
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -93,7 +93,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues)
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 
@@ -113,7 +113,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues),
         )
 
-        val decision = strategy.calculateAtIndex(3)
+        val decision = strategy.atIndex(3)
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -129,7 +129,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues),
         )
 
-        val decision = strategy.calculateAtIndex(1)
+        val decision = strategy.atIndex(1)
         assertEquals(StrategyDecision.Long, decision)
     }
 
@@ -144,7 +144,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues),
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision)
     }
 
@@ -159,7 +159,7 @@ class EmaCrossoverTest {
             emaLong = DataColumn.createValueColumn("emaLong", emaLongValues)
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision)
     }
 }

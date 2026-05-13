@@ -82,7 +82,7 @@ class SmaEaseOfMovementIndicator(
      *
      * @return DataColumn<BigDecimal> containing the SMA-smoothed EMV values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val emv: List<BigDecimal>
 
         val highDiff = high.indices.map { index ->

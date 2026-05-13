@@ -15,9 +15,9 @@ class DonchianChannelMband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Dcm, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val lband = DonchianChannelLband(high, low, close, window, offset, fillna).calculate()
-        val hband = DonchianChannelHband(high, low, close, window, offset, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val lband = DonchianChannelLband(high, low, close, window, offset, fillna).invoke()
+        val hband = DonchianChannelHband(high, low, close, window, offset, fillna).invoke()
 
         val mband = hband.toList().zip(lband.toList()) { high, low ->
             low.add((high.subtract(low)).divide(BigDecimal(2), 10, RoundingMode.HALF_UP))

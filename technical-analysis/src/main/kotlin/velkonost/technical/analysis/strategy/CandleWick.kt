@@ -13,7 +13,7 @@ class CandleWick(
     private val low: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.CandleWick, close.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         if (index < 4 ||
             index >= close.size() ||

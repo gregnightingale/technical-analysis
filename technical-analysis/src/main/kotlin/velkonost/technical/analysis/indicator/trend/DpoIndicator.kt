@@ -41,7 +41,7 @@ class DpoIndicator(
      *
      * @return DataColumn<BigDecimal> containing the DPO values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeList = close.toList()
         val meanClose = closeList.reduce { acc, value -> acc.add(value) }
             .divide(BigDecimal(closeList.size), 10, RoundingMode.HALF_UP)

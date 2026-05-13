@@ -72,7 +72,7 @@ class IchimokuConversionLine(
      *
      * @return DataColumn<BigDecimal> containing the Conversion Line values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val convHigh = high.calculateRollingMax(window1)
         val convLow = low.calculateRollingMin(window1)
 

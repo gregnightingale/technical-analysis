@@ -64,7 +64,7 @@ class CumulativeReturnIndicator(
      *
      * @return DataColumn<BigDecimal> containing the cumulative return values as percentages
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeValues = close.toList()
         val cumulativeReturn = Array(size) { BigDecimal.ZERO }
         if (closeValues.isNotEmpty()) {

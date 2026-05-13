@@ -49,8 +49,8 @@ class KstSignal(
      *
      * @return DataColumn<BigDecimal> containing the KST Signal Line values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val kst = Kst(close, roc1, roc2, roc3, roc4, window1, window2, window3, window4, nsig, fillna).invoke()
         val kstSignal = SmaFast(close).calculateSMA(kst, nsig)
 
         return DataColumn.createValueColumn(type.name, kstSignal.toList())

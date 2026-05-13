@@ -60,8 +60,8 @@ class STCIndicator(
      *
      * @return DataColumn<BigDecimal> containing the STC values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val macd = Macd(close, windowSlow, windowFast).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val macd = Macd(close, windowSlow, windowFast).invoke()
         val macdMin = macd.calculateRollingMin(cycle, skipUnderWindow = true)
         val macdMax = macd.calculateRollingMax(cycle, skipUnderWindow = true)
 

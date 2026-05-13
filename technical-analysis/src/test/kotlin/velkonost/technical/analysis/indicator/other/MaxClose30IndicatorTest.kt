@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 import velkonost.technical.analysis.indicator.TestTechnicalAnalysis.closeColumn
 import java.math.BigDecimal
 
-class MaxCloseIndicatorTest {
+class MaxClose30IndicatorTest {
     @Test
     fun test() {
         val prices: DataColumn<BigDecimal> = columnOf(10.0, 12.0, 15.0, 11.0, 14.0).named("Price").convertToBigDecimal()

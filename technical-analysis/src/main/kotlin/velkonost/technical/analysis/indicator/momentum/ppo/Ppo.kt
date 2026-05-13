@@ -14,7 +14,7 @@ class Ppo(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Ppo, size = close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         // Calculating Fast and Slow EMAs
         val emaFast = close.calculateEma(windowFast)
         val emaSlow = close.calculateEma(windowSlow)

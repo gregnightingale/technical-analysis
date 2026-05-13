@@ -6,7 +6,7 @@ import velkonost.technical.analysis.extensions.calculateRollingMax
 import velkonost.technical.analysis.extensions.calculateRollingMin
 import velkonost.technical.analysis.indicator.base.Indicator
 import velkonost.technical.analysis.indicator.base.IndicatorType
-import velkonost.technical.analysis.indicator.momentum.RsiIndicator
+import velkonost.technical.analysis.indicator.momentum.Rsi
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -18,13 +18,13 @@ class StochRsi(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.StochRsi, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val rsiIndicator = RsiIndicator(close, window, fillna = false).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val rsi = Rsi(close, window, fillna = false).invoke()
 
-        val lowestLowRsi = rsiIndicator.calculateRollingMin(window)
-        val highestHighRsi = rsiIndicator.calculateRollingMax(window)
+        val lowestLowRsi = rsi.calculateRollingMin(window)
+        val highestHighRsi = rsi.calculateRollingMax(window)
 
-        val stochRsi = rsiIndicator.mapIndexed { index, currentRsi ->
+        val stochRsi = rsi.mapIndexed { index, currentRsi ->
             val lowest = lowestLowRsi[index]
             val highest = highestHighRsi[index]
             if (highest != lowest) {

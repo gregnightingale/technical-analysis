@@ -8,7 +8,8 @@ class LowHA(
     private val low: DataColumn<BigDecimal>,
     private val closeHA: DataColumn<BigDecimal>,
 ) : Indicator(type = IndicatorType.LowHA, size = closeHA.size()) {
-    override fun calculate(): DataColumn<BigDecimal> =
+
+    override fun invoke(): DataColumn<BigDecimal> =
         DataColumn.createValueColumn(
             name = type.name,
             values = mutableListOf<BigDecimal>()

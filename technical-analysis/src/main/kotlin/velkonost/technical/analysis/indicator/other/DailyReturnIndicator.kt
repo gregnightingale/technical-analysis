@@ -59,7 +59,7 @@ class DailyReturnIndicator(
      *
      * @return DataColumn<BigDecimal> containing the daily return values as percentages
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeValues = close.toList()
         val dailyReturn = Array(size) { BigDecimal.ZERO }
 

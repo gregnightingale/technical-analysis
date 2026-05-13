@@ -13,8 +13,8 @@ class BollingerBandsLband(
     private val fillna: Boolean = false,
 ) : Indicator(IndicatorType.Bbl, close.size()) {
 
-    override fun calculate(): DataColumn<BigDecimal> {
-        val mavg = BollingerBandsMavg(close, window).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val mavg = BollingerBandsMavg(close, window).invoke()
         val mstd = BollingerBandsMstd(close, window).calculate(mavg)
 
         val result = mavg.toList().mapIndexed { index, avg ->

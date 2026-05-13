@@ -18,7 +18,7 @@ class KeltnerChannelMband(
     private val multiplier: Int = 2,
 ) : Indicator(IndicatorType.Kcc, close.size()), KeltnerChannel {
 
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val result = if (originalVersion) calculateSma(calculateTypicalPrice(), window) else close.calculateEma(window)
         return DataColumn.createValueColumn(type.name, result)
     }

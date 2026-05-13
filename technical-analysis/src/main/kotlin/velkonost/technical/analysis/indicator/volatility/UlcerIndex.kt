@@ -76,7 +76,7 @@ class UlcerIndex(
      *
      * @return DataColumn<BigDecimal> containing the Ulcer Index values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val uiMax = close.calculateRollingMax(window)
 
         val ulcerValues = close.mapIndexed { index, closeValue ->

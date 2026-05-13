@@ -8,7 +8,7 @@ class StochTest {
     @Test
     fun test() {
         with(TestTechnicalAnalysis) {
-            val indicator = Stoch(
+            val indicator = StochFastK(
                 high = highColumn,
                 close = closeColumn,
                 low = lowColumn,

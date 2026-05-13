@@ -9,11 +9,10 @@ import java.math.BigDecimal
 class TripleEma(
     private val ema3: DataColumn<BigDecimal>,
     private val ema6: DataColumn<BigDecimal>,
-    private val ema9: DataColumn<BigDecimal>,
-    private val backStep: Int = 0
+    private val ema9: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.TripleEma, ema3.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         // Проверка валидности индексов
         if (index < 4 ||

@@ -12,11 +12,10 @@ class TripleEmaStochRsiAtr(
     private val ema14: DataColumn<BigDecimal>,
     private val ema8: DataColumn<BigDecimal>,
     private val fastd: DataColumn<BigDecimal>,
-    private val fastk: DataColumn<BigDecimal>,
-    private val backStep: Int = 0
+    private val fastk: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.TripleEmaStochRsiAtr, close.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         // Ensure indices are valid and avoid IndexOutOfBoundsException
         if (index < 1 ||

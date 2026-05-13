@@ -14,7 +14,7 @@ class StochRsiMacd(
     private val macdSignal: DataColumn<BigDecimal>,
 ) : Strategy(StrategyType.StochRsiMacd, fastd.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         // Check for valid index boundaries
         if (index < 3 ||

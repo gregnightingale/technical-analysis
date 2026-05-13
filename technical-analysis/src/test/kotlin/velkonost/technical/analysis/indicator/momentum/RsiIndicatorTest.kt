@@ -8,7 +8,7 @@ class RsiIndicatorTest {
     @Test
     fun test() {
         with(TestTechnicalAnalysis) {
-            val indicator = RsiIndicator(
+            val indicator = Rsi(
                 close = closeColumn,
                 fillna = true
             )

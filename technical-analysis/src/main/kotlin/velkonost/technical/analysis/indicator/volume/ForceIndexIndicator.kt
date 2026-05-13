@@ -67,7 +67,7 @@ class ForceIndexIndicator(
      *
      * @return DataColumn<BigDecimal> containing the smoothed Force Index values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val fi = calculateForceIndex1()
         val fiAfterEma = Ema(fi, window).calculate()
         return DataColumn.createValueColumn(type.name, fiAfterEma.toList())

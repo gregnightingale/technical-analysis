@@ -15,7 +15,7 @@ class Breakout(
     private val invert: Boolean = false
 ) : Strategy(StrategyType.Breakout, close.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         if (index < 0 ||
             index >= close.size() ||

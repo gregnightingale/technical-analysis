@@ -119,7 +119,7 @@ class RsiStochEmaTest {
             backStep = 90
         )
 
-        val earlyDecision = strategy.calculateAtIndex(90)
+        val earlyDecision = strategy.atIndex(90)
         assertEquals(StrategyDecision.Short, earlyDecision, "A sell signal (Short) is expected at index level 90.")
 
         // Verifying the buy signal on the latest index
@@ -130,7 +130,7 @@ class RsiStochEmaTest {
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
         )
-        val decision = earlyStrategy.calculateMostRecent()
+        val decision = earlyStrategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long) на последнем индексе")
     }
 
@@ -204,7 +204,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Long, decision, "Ожидается сигнал на покупку (Long)")
     }
 
@@ -280,7 +280,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Short, decision, "Ожидается сигнал на продажу (Short)")
     }
 
@@ -312,7 +312,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала (Nothing)")
     }
 
@@ -344,7 +344,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при недостатке данных")
     }
 
@@ -381,7 +381,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала без дивергенции")
     }
 
@@ -416,7 +416,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при пересечении цены и EMA200 без дивергенции")
     }
 
@@ -447,7 +447,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала на флетовом рынке")
     }
 
@@ -508,7 +508,7 @@ class RsiStochEmaTest {
             backStep = actualIndex
         )
 
-        val decision = strategy.calculateMostRecent()
+        val decision = strategy.mostRecent()
         assertEquals(StrategyDecision.Nothing, decision, "Ожидается отсутствие сигнала при резком падении рынка и отсутствии дивергенции")
     }
 }

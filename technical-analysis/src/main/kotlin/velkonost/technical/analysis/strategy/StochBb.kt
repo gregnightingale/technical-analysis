@@ -9,11 +9,10 @@ import java.math.BigDecimal
 class StochBb(
     private val fastd: DataColumn<BigDecimal>,
     private val fastk: DataColumn<BigDecimal>,
-    private val percentB: DataColumn<BigDecimal>,
-    private val backStep: Int = 0
+    private val percentB: DataColumn<BigDecimal>
 ) : Strategy(StrategyType.StochasticBb, fastd.size()) {
 
-    override fun calculateAtIndex(index: Int): StrategyDecision {
+    override fun atIndex(index: Int): StrategyDecision {
 
         // Проверка валидности индексов
         if (index < 2 ||

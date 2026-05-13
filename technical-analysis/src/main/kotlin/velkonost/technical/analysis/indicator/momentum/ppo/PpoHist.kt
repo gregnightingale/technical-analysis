@@ -44,9 +44,9 @@ class PpoHist(
      *
      * @return DataColumn<BigDecimal> containing the PPO Histogram values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
-        val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).calculate()
-        val ppoSignal = PpoSignal(close, windowSlow, windowFast, windowSign, fillna).calculate()
+    override fun invoke(): DataColumn<BigDecimal> {
+        val ppo = Ppo(close, windowSlow, windowFast, windowSign, fillna).invoke()
+        val ppoSignal = PpoSignal(close, windowSlow, windowFast, windowSign, fillna).invoke()
         val ppoHist = Array(size) { i ->
             ppo[i].subtract(ppoSignal[i])
         }

@@ -65,7 +65,7 @@ class UltimateOscillator(
      *
      * @return DataColumn<BigDecimal> containing the Ultimate Oscillator values
      */
-    override fun calculate(): DataColumn<BigDecimal> {
+    override fun invoke(): DataColumn<BigDecimal> {
         val closeShift = close.mapIndexed { index, value ->
             if (index == 0) value else close[index - 1]
         }.toList()
