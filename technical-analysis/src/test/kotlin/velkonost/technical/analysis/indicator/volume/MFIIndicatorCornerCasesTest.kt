@@ -16,7 +16,7 @@ class MFIIndicatorCornerCasesTest {
         val volume = DataColumn.createValueColumn("volume", listOf(BigDecimal("100"), BigDecimal("110"), BigDecimal("120")))
 
         val indicator = MFIIndicator(high, low, close, volume, window = 14)
-        val result = indicator.calculate().toList()
+        val result = indicator.invoke().toList()
         // Все значения до заполнения окна 14 — 50
         assertEquals(listOf(BigDecimal("50"), BigDecimal("50"), BigDecimal("50")), result)
     }

@@ -11,7 +11,7 @@ class DailyReturnCornerCasesTest {
     fun `Empty input returns single zero`() {
         val close = DataColumn.createValueColumn("close", emptyList<BigDecimal>())
         val indicator = DailyReturnIndicator(close)
-        val result = indicator.calculate()
+        val result = indicator.invoke()
         Assertions.assertEquals(0, result.size())
     }
 
@@ -22,7 +22,7 @@ class DailyReturnCornerCasesTest {
             listOf(BigDecimal.ZERO, BigDecimal("100"))
         )
         val indicator = DailyReturnIndicator(close)
-        val result = indicator.calculate().toList()
+        val result = indicator.invoke().toList()
         // First is 0 by definition, second is 0 because previous is zero
         Assertions.assertEquals(listOf(BigDecimal.ZERO, BigDecimal.ZERO), result)
     }

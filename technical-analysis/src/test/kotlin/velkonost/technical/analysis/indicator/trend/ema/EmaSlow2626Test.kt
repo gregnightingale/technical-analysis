@@ -10,7 +10,6 @@ class EmaSlow2626Test {
         with(TestTechnicalAnalysis) {
             val indicator = EmaSlow26(
                 close = closeColumn,
-                fillna = true
             )
             assertEquals(true, indicator.isEqual(dataframe))
         }

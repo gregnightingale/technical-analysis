@@ -13,7 +13,7 @@ class MaxClose30IndicatorTest {
     @Test
     fun test() {
         val prices: DataColumn<BigDecimal> = columnOf(10.0, 12.0, 15.0, 11.0, 14.0).named("Price").convertToBigDecimal()
-        val result: DataColumn<BigDecimal> = MaxCloseIndicator( close = prices, window = 2 ).calculate()
+        val result: DataColumn<BigDecimal> = MaxCloseIndicator( close = prices, window = 2 ).invoke()
         val expected: DataColumn<BigDecimal> = columnOf(10.0, 12.0, 15.0, 15.0, 14.0).named("Price").convertToBigDecimal()
         assertEquals(expected.toList(),result.toList())
     }

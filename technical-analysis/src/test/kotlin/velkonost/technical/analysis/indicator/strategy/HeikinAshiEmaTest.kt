@@ -92,7 +92,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size - 1
         )
 
         val result = strategy.mostRecent()
@@ -166,7 +165,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -200,7 +198,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -233,7 +230,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -302,7 +298,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size - 1
         )
 
         val result = strategy.mostRecent()
@@ -371,7 +366,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -440,7 +434,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -509,7 +502,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()
@@ -545,7 +537,6 @@ class HeikinAshiEmaTest {
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
             ema200 = data["ema200"]!!,
-            backStep = size -1
         )
 
         val result = strategy.mostRecent()

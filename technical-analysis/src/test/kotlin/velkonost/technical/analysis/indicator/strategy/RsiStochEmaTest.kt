@@ -116,7 +116,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = 90
         )
 
         val earlyDecision = strategy.atIndex(90)
@@ -201,7 +200,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -277,7 +275,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -309,7 +306,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -341,7 +337,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -378,7 +373,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -413,7 +407,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -444,7 +437,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()
@@ -505,7 +497,6 @@ class RsiStochEmaTest {
             rsiSignal = data["rsiSignal"]!!,
             fastk = data["fastk"]!!,
             fastd = data["fastd"]!!,
-            backStep = actualIndex
         )
 
         val decision = strategy.mostRecent()

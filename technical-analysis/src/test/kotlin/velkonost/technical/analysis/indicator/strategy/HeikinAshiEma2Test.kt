@@ -72,7 +72,6 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -146,7 +145,6 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -200,7 +198,6 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -238,7 +235,6 @@ class HeikinAshiEma2Test {
             fastd = DataColumn.createValueColumn("fastd", MutableList(size) { BigDecimal.ZERO }),
             fastk = DataColumn.createValueColumn("fastk", MutableList(size) { BigDecimal.ZERO }),
             ema200 = DataColumn.createValueColumn("ema200", MutableList(size) { BigDecimal.ZERO }),
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -276,7 +272,6 @@ class HeikinAshiEma2Test {
             fastd = DataColumn.createValueColumn("fastd", MutableList(size) { BigDecimal.ZERO }),
             fastk = DataColumn.createValueColumn("fastk", MutableList(size) { BigDecimal.ZERO }),
             ema200 = DataColumn.createValueColumn("ema200", MutableList(size) { BigDecimal.ZERO }),
-            backStep = currentIndex
         )
 
         // Calculate the result
@@ -320,7 +315,6 @@ class HeikinAshiEma2Test {
             fastd = fastdColumn,
             fastk = fastkColumn,
             ema200 = ema200Column,
-            backStep = currentIndex
         )
 
         // Calculate the result

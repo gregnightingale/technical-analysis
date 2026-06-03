@@ -50,7 +50,6 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -82,7 +81,6 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -103,7 +101,6 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -124,7 +121,6 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -156,7 +152,6 @@ class TripleEmaTest {
             ema3 = data["ema3"]!!,
             ema6 = data["ema6"]!!,
             ema9 = data["ema9"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()

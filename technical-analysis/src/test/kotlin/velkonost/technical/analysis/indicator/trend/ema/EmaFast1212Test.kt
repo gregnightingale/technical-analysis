@@ -10,7 +10,6 @@ class EmaFast1212Test {
         with(TestTechnicalAnalysis) {
             val indicator = EmaFast12(
                 close = closeColumn,
-                fillna = true
             )
             assertEquals(true, indicator.isEqual(dataframe))
         }

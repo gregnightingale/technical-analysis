@@ -15,7 +15,7 @@ class KeltnerChannelPbandCornerCasesTest {
         val close = DataColumn.createValueColumn("close", listOf(BigDecimal("10"), BigDecimal("10")))
 
         val indicator = KeltnerChannelPband(high, low, close)
-        val result = indicator.calculate().toList()
+        val result = indicator.invoke().toList()
         assertEquals(listOf(BigDecimal.ZERO, BigDecimal.ZERO), result)
     }
 }

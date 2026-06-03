@@ -282,7 +282,7 @@ class GoldenCrossTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
         )
 
-        print (strategy.calculate())
+        print (strategy.invoke())
         val decision = strategy.atIndex(3)
         assertEquals(StrategyDecision.Long, decision)
     }
@@ -335,7 +335,7 @@ class GoldenCrossTest {
             rsi = DataColumn.createValueColumn("rsi", rsiValues),
         )
 
-        print(strategy.calculate())
+        print(strategy.invoke())
         val decision = strategy.atIndex(3)
         assertEquals(StrategyDecision.Short, decision)
     }

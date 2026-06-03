@@ -59,7 +59,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -92,7 +91,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -119,7 +117,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -146,7 +143,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -191,7 +187,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -236,7 +231,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -281,7 +275,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
@@ -326,7 +319,6 @@ class TripleEmaStochRsiAtrTest {
             ema8 = data["ema8"]!!,
             fastd = data["fastd"]!!,
             fastk = data["fastk"]!!,
-            backStep = size - 1
         )
 
         val decision = strategy.mostRecent()
